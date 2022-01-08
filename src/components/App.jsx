@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, lightTheme, darkTheme } from '../themes';
 import Navigation from './Navigation';
+import Container from './Container';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -27,7 +28,15 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <>
-        <Navigation />
+        <Container>
+          <Navigation
+            onThemeChange={(e) => {
+              e.preventDefault();
+              toggleTheme();
+            }}
+            theme={theme}
+          />
+        </Container>
         <GlobalStyles />
       </>
     </ThemeProvider>
