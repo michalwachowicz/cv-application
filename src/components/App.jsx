@@ -29,13 +29,7 @@ function App() {
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <>
         <Container>
-          <Navigation
-            onThemeChange={(e) => {
-              e.preventDefault();
-              toggleTheme();
-            }}
-            theme={theme}
-          />
+          <Navigation onThemeChange={toggleTheme} theme={theme} />
         </Container>
         <GlobalStyles />
       </>

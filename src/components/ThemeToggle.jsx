@@ -7,7 +7,7 @@ import moonSvg from '../assets/moon.svg';
 function ThemeToggle(props) {
   const { theme, onThemeChange } = props;
   return (
-    <ToggleContainer>
+    <>
       {theme !== 'dark' || (
         <DarkLabel htmlFor="theme-toggle">
           <ImgContainer>
@@ -23,7 +23,7 @@ function ThemeToggle(props) {
         </LightLabel>
       )}
       <Toggle type="checkbox" id="theme-toggle" onClick={onThemeChange} />
-    </ToggleContainer>
+    </>
   );
 }
 
@@ -32,13 +32,12 @@ ThemeToggle.propTypes = {
   onThemeChange: PropTypes.func.isRequired,
 };
 
-const TOGGLE_HEIGHT = '2rem';
-
 const Label = styled.label`
   position: relative;
   display: block;
   width: 4rem;
-  height: ${TOGGLE_HEIGHT};
+  height: 2rem;
+  margin-left: auto;
   border-radius: 100px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -80,10 +79,6 @@ const Toggle = styled.input`
   width: 0;
   height: 0;
   visibility: hidden;
-`;
-
-const ToggleContainer = styled.div`
-  height: ${TOGGLE_HEIGHT};
 `;
 
 export default ThemeToggle;
