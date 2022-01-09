@@ -5,7 +5,7 @@ import { GlobalStyles, lightTheme, darkTheme } from '../themes';
 import Navigation from './Navigation';
 import Container from './Container';
 import MainCard from './MainCard';
-import { setCurrentTabItem } from '../util/tabUtil';
+import { getCurrentTabItemId, setCurrentTabItem } from '../util/tabUtil';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -45,6 +45,7 @@ function App() {
           <MainCard
             tabBarItems={tabBarItems}
             onCurrentChange={setCurrentPage}
+            index={getCurrentTabItemId(tabBarItems)}
           />
         </Container>
         <GlobalStyles />
