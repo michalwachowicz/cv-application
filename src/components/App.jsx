@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+import uniqid from 'uniqid';
 import { GlobalStyles, lightTheme, darkTheme } from '../themes';
 import Navigation from './Navigation';
 import Container from './Container';
+import MainCard from './MainCard';
+import { setCurrentTabItem } from '../util/tabUtil';
 
 function App() {
   const [theme, setTheme] = useState('dark');
+  const [tabBarItems, setTabBarItems] = useState([
+    { title: 'Personal', active: true, id: uniqid() },
+    { title: 'Experience', active: false, id: uniqid() },
+    { title: 'Download CV', active: false, id: uniqid() },
+  ]);
+
+  const setCurrentPage = (index) => {
+    setTabBarItems(setCurrentTabItem(tabBarItems, index));
+  };
 
   const toggleTheme = () => {
     const updatedTheme = theme === 'dark' ? 'light' : 'dark';
@@ -30,6 +42,10 @@ function App() {
       <>
         <Container>
           <Navigation onThemeChange={toggleTheme} theme={theme} />
+          <MainCard
+            tabBarItems={tabBarItems}
+            onCurrentChange={setCurrentPage}
+          />
         </Container>
         <GlobalStyles />
       </>

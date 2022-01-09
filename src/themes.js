@@ -18,11 +18,17 @@ const GlobalStyles = createGlobalStyle`
 const lightTheme = {
   body: '#E9ECEF',
   textColor: '#212529',
+  main: '#845EF7',
+  card: '#fff',
+  cardInactive: '#DEE2E6',
 };
 
 const darkTheme = {
   body: '#171A1D',
   textColor: '#fff',
+  main: '#845EF7',
+  card: '#343A40',
+  cardInactive: '#262B30',
 };
 
 export { GlobalStyles, lightTheme, darkTheme };
