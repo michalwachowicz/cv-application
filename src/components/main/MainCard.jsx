@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import MainContent from './MainContent';
-import TabBar, { itemsArray } from './TabBar';
+import TabBar, { itemsArray } from '../tab/TabBar';
 
 function MainCard(props) {
   const { tabBarItems, onCurrentChange, index } = props;

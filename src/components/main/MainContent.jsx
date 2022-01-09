@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Personal from './Personal';
-import Experience from './Experience';
-import DownloadCV from './DownloadCV';
+import Personal from '../pages/Personal';
+import Experience from '../pages/Experience';
+import DownloadCV from '../pages/DownloadCV';
 
 function MainContent({ index }) {
   const pages = [
