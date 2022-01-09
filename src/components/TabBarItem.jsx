@@ -6,8 +6,8 @@ function TabBarItem({ index, data, onCurrentChange }) {
   const { title, active } = data;
   return (
     <TabBarItemCard active={active} onClick={() => onCurrentChange(index)}>
-      <NumberCircle>{index + 1}</NumberCircle>
-      <Title>{title}</Title>
+      <NumberCircle active={active}>{index + 1}</NumberCircle>
+      <Title active={active}>{title}</Title>
     </TabBarItemCard>
   );
 }
@@ -49,8 +49,9 @@ const NumberCircle = styled.div`
   width: 2rem;
   height: 2rem;
   border-radius: 100px;
-  background-color: ${({ theme }) => theme.main};
-  color: #fff;
+  background-color: ${({ active, theme }) =>
+    active ? theme.main : theme.cardInactiveCircle};
+  color: ${({ active, theme }) => (active ? '#fff' : theme.cardInactiveText)};
   font-size: 1rem;
   font-weight: 700;
 `;
@@ -58,6 +59,8 @@ const NumberCircle = styled.div`
 const Title = styled.div`
   font-size: 1rem;
   text-align: center;
+  color: ${({ active, theme }) =>
+    active ? theme.textColor : theme.cardInactiveText};
 
   @media (max-width: 700px) {
     font-size: 0.75rem;

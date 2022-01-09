@@ -21,6 +21,8 @@ const lightTheme = {
   main: '#845EF7',
   card: '#fff',
   cardInactive: '#DEE2E6',
+  cardInactiveCircle: '#868E96',
+  cardInactiveText: '#ADB5BD',
 };
 
 const darkTheme = {
@@ -29,6 +31,8 @@ const darkTheme = {
   main: '#845EF7',
   card: '#343A40',
   cardInactive: '#262B30',
+  cardInactiveCircle: '#495057',
+  cardInactiveText: '#868E96',
 };
 
 export { GlobalStyles, lightTheme, darkTheme };
