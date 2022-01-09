@@ -1,4 +1,4 @@
-const f = require('../src/util/tabUtil');
+import { getCurrentTabItemId, setCurrentTabItem } from '../src/util/tabUtil';
 
 describe('Test Tab Items data functions', () => {
   let tabItems;
@@ -12,19 +12,16 @@ describe('Test Tab Items data functions', () => {
   });
 
   test('Returns current tab item correctly', () => {
-    expect(f.getCurrentTabItem(tabItems)).toEqual({
-      title: 'Personal',
-      active: true,
-    });
+    expect(getCurrentTabItemId(tabItems)).toBe(0);
   });
 
   test('Returns undefined when if none of items is active', () => {
     tabItems[0] = { title: 'Personal', active: false };
-    expect(f.getCurrentTabItem(tabItems)).toBeUndefined();
+    expect(getCurrentTabItemId(tabItems)).toBe(-1);
   });
 
   test('Sets current item correctly', () => {
-    expect(f.setCurrentTabItem(tabItems, 1)).toEqual([
+    expect(setCurrentTabItem(tabItems, 1)).toEqual([
       { title: 'Personal', active: false },
       { title: 'Experience', active: true },
       { title: 'Download CV', active: false },
