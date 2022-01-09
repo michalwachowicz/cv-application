@@ -1,11 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Personal from './Personal';
+import Experience from './Experience';
+import DownloadCV from './DownloadCV';
 
 function MainContent({ index }) {
+  const pages = [
+    { title: 'Personal Information', page: <Personal /> },
+    { title: 'Experience', page: <Experience /> },
+    { title: 'DownloadCV', page: <DownloadCV /> },
+  ];
   return (
     <MainContentContainer>
-      <Title>{titles[index]}</Title>
+      <Title>{pages[index].title}</Title>
+      {pages[index].page}
     </MainContentContainer>
   );
 }
@@ -28,7 +37,5 @@ const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: 900;
 `;
-
-const titles = ['Personal Information', 'Experience', 'Download CV'];
 
 export default MainContent;
