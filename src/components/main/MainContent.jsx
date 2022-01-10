@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import Personal from '../pages/Personal';
 import Experience from '../pages/Experience';
 import DownloadCV from '../pages/DownloadCV';
+import CVButton from '../elements/CVButton';
 
-function MainContent({ index }) {
+function MainContent({ index, onDisplayCV }) {
   const pages = [
     { title: 'Personal Information', page: <Personal /> },
     { title: 'Experience', page: <Experience /> },
@@ -13,7 +14,10 @@ function MainContent({ index }) {
   ];
   return (
     <MainContentContainer>
-      <Title>{pages[index].title}</Title>
+      <Header>
+        <Title>{pages[index].title}</Title>
+        <CVButton onCvButtonClick={onDisplayCV} />
+      </Header>
       {pages[index].page}
     </MainContentContainer>
   );
@@ -21,6 +25,7 @@ function MainContent({ index }) {
 
 MainContent.propTypes = {
   index: PropTypes.number.isRequired,
+  onDisplayCV: PropTypes.func.isRequired,
 };
 
 const MainContentContainer = styled.div`
@@ -31,6 +36,12 @@ const MainContentContainer = styled.div`
   @media (max-width: 480px) {
     padding: 1rem;
   }
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Title = styled.h2`

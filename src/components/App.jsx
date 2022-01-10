@@ -45,6 +45,9 @@ function App() {
           <MainCard
             tabBarItems={tabBarItems}
             onCurrentChange={setCurrentPage}
+            onDisplayCV={() => {
+              // TODO: Show CV Card
+            }}
             index={getCurrentTabItemId(tabBarItems)}
           />
         </Container>
