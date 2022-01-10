@@ -1,0 +1,123 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Field, Label, LabelRequired } from './InputStyles';
+import dropdownSvg from '../../assets/dropdown.svg';
+
+function Select(props) {
+  const { label, id, title, options, onSelect, required } = props;
+  const [open, setOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(title);
+
+  const toggle = () => setOpen((prevState) => !prevState);
+  const selectOption = (option) => {
+    setSelectedOption(option);
+    setOpen(false);
+    onSelect({ id, value: option });
+  };
+
+  return (
+    <div>
+      {required || <Label htmlFor={id}>{label}</Label>}
+      {!required || <LabelRequired htmlFor={id}>{label}</LabelRequired>}
+      <DropdownContainer>
+        <DropdownHeader onClick={toggle}>
+          <div>{selectedOption || title}</div>
+          <DropdownIcon src={dropdownSvg} alt="Dropdown Triangle Icon" />
+        </DropdownHeader>
+        {open && (
+          <DropdownOptionsContainer>
+            <DropdownOptions>
+              {options.map((option) =>
+                option === selectedOption ? (
+                  <DropdownOptionSelected onClick={() => selectOption(option)}>
+                    {option}
+                  </DropdownOptionSelected>
+                ) : (
+                  <DropdownOption onClick={() => selectOption(option)}>
+                    {option}
+                  </DropdownOption>
+                ),
+              )}
+            </DropdownOptions>
+          </DropdownOptionsContainer>
+        )}
+      </DropdownContainer>
+    </div>
+  );
+}
+
+Select.propTypes = {
+  label: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  required: PropTypes.bool,
+};
+
+Select.defaultProps = {
+  required: false,
+};
+
+const DropdownContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const DropdownHeader = styled.div`
+  ${Field}
+
+  & {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+`;
+
+const DropdownIcon = styled.img`
+  width: 0.75rem;
+  height: 0.75rem;
+`;
+
+const DropdownOptionsContainer = styled.div`
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+`;
+
+const DropdownOptions = styled.ul`
+  padding: 0.5rem;
+  border-radius: 1rem;
+  list-style: none;
+  background-color: ${({ theme }) => theme.card};
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
+  font-weight: 700;
+
+  & > * {
+    margin-bottom: 0.5rem;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const DropdownOption = styled.li`
+  padding: 1rem;
+  border-radius: 1rem;
+  color: ${({ theme }) => theme.textContent};
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    background-color: ${({ theme }) => theme.input};
+  }
+`;
+
+const DropdownOptionSelected = styled(DropdownOption)`
+  background-color: ${({ theme }) => theme.input};
+`;
+
+export default Select;
