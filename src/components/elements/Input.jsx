@@ -45,6 +45,7 @@ const LabelRequired = styled(Label)`
 `;
 
 const InputField = styled.input`
+  min-height: 3rem;
   width: 100%;
   margin-top: 0.5rem;
   padding: 0.75rem;
@@ -54,6 +55,11 @@ const InputField = styled.input`
   color: ${({ theme }) => theme.textColor};
   font-size: 1rem;
   transition: background-color 0.5s ease;
+  -webkit-appearance: none;
+
+  &::-webkit-date-and-time-value {
+    text-align: left;
+  }
 
   &:hover,
   &:active {
