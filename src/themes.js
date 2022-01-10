@@ -18,21 +18,27 @@ const GlobalStyles = createGlobalStyle`
 const lightTheme = {
   body: '#E9ECEF',
   textColor: '#212529',
+  textContent: '#868E96',
   main: '#845EF7',
   card: '#fff',
   cardInactive: '#DEE2E6',
   cardInactiveCircle: '#868E96',
   cardInactiveText: '#ADB5BD',
+  input: '#DEE2E6',
+  inputActive: '#CED4DA',
 };
 
 const darkTheme = {
   body: '#171A1D',
   textColor: '#fff',
+  textContent: '#ADB5BD',
   main: '#845EF7',
   card: '#343A40',
   cardInactive: '#262B30',
   cardInactiveCircle: '#495057',
   cardInactiveText: '#868E96',
+  input: '#495057',
+  inputActive: '#575F67',
 };
 
 export { GlobalStyles, lightTheme, darkTheme };
