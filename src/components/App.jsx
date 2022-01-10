@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import uniqid from 'uniqid';
 import { GlobalStyles, lightTheme, darkTheme } from '../themes';
 import Navigation from './Navigation';
-import Container from './Container';
+import Container from './containers/Container';
 import MainCard from './main/MainCard';
 import { getCurrentTabItemId, setCurrentTabItem } from '../util/tabUtil';
 
