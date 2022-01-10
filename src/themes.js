@@ -26,6 +26,8 @@ const lightTheme = {
   cardInactiveText: '#ADB5BD',
   input: '#DEE2E6',
   inputActive: '#CED4DA',
+  secondaryButton: '#DEE2E6',
+  secondaryButtonText: '#868E96',
 };
 
 const darkTheme = {
@@ -39,6 +41,8 @@ const darkTheme = {
   cardInactiveText: '#868E96',
   input: '#495057',
   inputActive: '#575F67',
+  secondaryButton: '#575F67',
+  secondaryButtonText: '#fff',
 };
 
 export { GlobalStyles, lightTheme, darkTheme };
