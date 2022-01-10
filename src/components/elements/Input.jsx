@@ -53,6 +53,7 @@ const InputField = styled.input`
   background-color: ${({ theme }) => theme.input};
   color: ${({ theme }) => theme.textColor};
   font-size: 1rem;
+  transition: background-color 0.5s ease;
 
   &:hover,
   &:active {

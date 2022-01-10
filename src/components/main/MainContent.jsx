@@ -42,6 +42,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2.5rem;
 `;
 
 const Title = styled.h2`
