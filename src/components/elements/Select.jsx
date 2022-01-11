@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import uniqid from 'uniqid';
 import { Field, Label, LabelRequired } from './InputStyles';
 import dropdownSvg from '../../assets/dropdown.svg';
 
@@ -30,11 +31,15 @@ function Select(props) {
             <DropdownOptions>
               {options.map((option) =>
                 option === selectedOption ? (
-                  <DropdownOptionSelected onClick={() => selectOption(option)}>
+                  <DropdownOptionSelected
+                    onClick={() => selectOption(option)}
+                    key={uniqid()}>
                     {option}
                   </DropdownOptionSelected>
                 ) : (
-                  <DropdownOption onClick={() => selectOption(option)}>
+                  <DropdownOption
+                    onClick={() => selectOption(option)}
+                    key={uniqid()}>
                     {option}
                   </DropdownOption>
                 ),
