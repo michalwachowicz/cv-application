@@ -27,6 +27,7 @@ const Field = css`
   -webkit-appearance: none;
 
   &:hover,
+  &:focus,
   &:active {
     background-color: ${({ theme }) => theme.inputActive};
   }
