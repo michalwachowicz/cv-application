@@ -5,11 +5,17 @@ import MainContent from './MainContent';
 import TabBar, { itemsArray } from '../tab/TabBar';
 
 function MainCard(props) {
-  const { tabBarItems, onCurrentChange, onDisplayCV, index } = props;
+  const { tabBarItems, onCurrentChange, onDisplayCV, onRetrieveData, index } =
+    props;
   return (
     <Main>
       <TabBar items={tabBarItems} onCurrentChange={onCurrentChange} />
-      <MainContent index={index} onDisplayCV={onDisplayCV} />
+      <MainContent
+        index={index}
+        onDisplayCV={onDisplayCV}
+        onRetrieveData={onRetrieveData}
+        onChangePage={onCurrentChange}
+      />
     </Main>
   );
 }
@@ -18,6 +24,7 @@ MainCard.propTypes = {
   tabBarItems: itemsArray.isRequired,
   onCurrentChange: PropTypes.func.isRequired,
   onDisplayCV: PropTypes.func.isRequired,
+  onRetrieveData: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };
 

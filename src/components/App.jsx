@@ -16,6 +16,7 @@ function App() {
   ]);
 
   const setCurrentPage = (index) => {
+    // TODO: Check if required fields are set
     setTabBarItems(setCurrentTabItem(tabBarItems, index));
   };
 
@@ -47,6 +48,9 @@ function App() {
             onCurrentChange={setCurrentPage}
             onDisplayCV={() => {
               // TODO: Show CV Card
+            }}
+            onRetrieveData={() => {
+              // TODO: Add retrieved data to CV Card
             }}
             index={getCurrentTabItemId(tabBarItems)}
           />

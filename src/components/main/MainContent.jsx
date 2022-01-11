@@ -6,9 +6,17 @@ import Experience from '../pages/Experience';
 import DownloadCV from '../pages/DownloadCV';
 import CVButton from '../elements/CVButton';
 
-function MainContent({ index, onDisplayCV }) {
+function MainContent({ index, onDisplayCV, onRetrieveData, onChangePage }) {
   const pages = [
-    { title: 'Personal Information', page: <Personal /> },
+    {
+      title: 'Personal Information',
+      page: (
+        <Personal
+          onRetrieveData={onRetrieveData}
+          onClickNext={() => onChangePage(1)}
+        />
+      ),
+    },
     { title: 'Experience', page: <Experience /> },
     { title: 'DownloadCV', page: <DownloadCV /> },
   ];
@@ -26,6 +34,8 @@ function MainContent({ index, onDisplayCV }) {
 MainContent.propTypes = {
   index: PropTypes.number.isRequired,
   onDisplayCV: PropTypes.func.isRequired,
+  onRetrieveData: PropTypes.func.isRequired,
+  onChangePage: PropTypes.func.isRequired,
 };
 
 const MainContentContainer = styled.div`
