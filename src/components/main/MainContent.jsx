@@ -6,7 +6,15 @@ import Experience from '../pages/Experience';
 import DownloadCV from '../pages/DownloadCV';
 import CVButton from '../elements/CVButton';
 
-function MainContent({ index, onDisplayCV, onRetrieveData, onChangePage }) {
+function MainContent(props) {
+  const {
+    index,
+    onDisplayCV,
+    onRetrieveData,
+    onUploadImage,
+    onChangePage,
+    userPhoto,
+  } = props;
   const pages = [
     {
       title: 'Personal Information',
@@ -14,6 +22,8 @@ function MainContent({ index, onDisplayCV, onRetrieveData, onChangePage }) {
         <Personal
           onRetrieveData={onRetrieveData}
           onClickNext={() => onChangePage(1)}
+          onUploadImage={onUploadImage}
+          userPhoto={userPhoto}
         />
       ),
     },
@@ -35,7 +45,13 @@ MainContent.propTypes = {
   index: PropTypes.number.isRequired,
   onDisplayCV: PropTypes.func.isRequired,
   onRetrieveData: PropTypes.func.isRequired,
+  onUploadImage: PropTypes.func.isRequired,
   onChangePage: PropTypes.func.isRequired,
+  userPhoto: PropTypes.string,
+};
+
+MainContent.defaultProps = {
+  userPhoto: null,
 };
 
 const MainContentContainer = styled.div`

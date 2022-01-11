@@ -9,6 +9,7 @@ import { getCurrentTabItemId, setCurrentTabItem } from '../util/tabUtil';
 
 function App() {
   const [theme, setTheme] = useState('dark');
+  const [userPhoto, setUserPhoto] = useState(null);
   const [tabBarItems, setTabBarItems] = useState([
     { title: 'Personal', active: true, id: uniqid() },
     { title: 'Experience', active: false, id: uniqid() },
@@ -38,6 +39,11 @@ function App() {
     }
   }, []);
 
+  const updatePhoto = (url) => {
+    if (userPhoto) URL.revokeObjectURL(userPhoto);
+    setUserPhoto(url);
+  };
+
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <>
@@ -52,7 +58,9 @@ function App() {
             onRetrieveData={() => {
               // TODO: Add retrieved data to CV Card
             }}
+            userPhoto={userPhoto}
             index={getCurrentTabItemId(tabBarItems)}
+            onUploadImage={updatePhoto}
           />
         </Container>
         <GlobalStyles />
