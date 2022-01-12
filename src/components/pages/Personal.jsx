@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Input from '../elements/inputs/Input';
 import InputContainer from '../containers/InputContainer';
-import InputsWrapper from '../wrappers/InputsWrapper';
 import Select from '../elements/inputs/Select';
 import { SuccessButton } from '../elements/buttons/UIButton';
 import ButtonContainer from '../containers/ButtonContainer';
 import ImageInput from '../elements/inputs/ImageInput';
+import { Wrapper } from '../wrappers/Wrapper';
 
 function Personal(props) {
   const { onRetrieveData, onUploadImage, onClickNext, userPhoto } = props;
@@ -15,7 +15,7 @@ function Personal(props) {
     <ContentWrapper>
       <ImageInput image={userPhoto} onUploadImage={onUploadImage} />
       <div>
-        <InputsWrapper>
+        <Wrapper size="2rem">
           <InputContainer>
             <Input
               type="text"
@@ -92,7 +92,7 @@ function Personal(props) {
               onFocusLeft={onRetrieveData}
             />
           </InputContainer>
-        </InputsWrapper>
+        </Wrapper>
         <ButtonContainer>
           <SuccessButton onClick={onClickNext}>Next</SuccessButton>
         </ButtonContainer>

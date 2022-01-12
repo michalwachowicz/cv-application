@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import uniqid from 'uniqid';
 import { Field, Label, LabelRequired } from './InputStyles';
 import dropdownSvg from '../../../assets/dropdown.svg';
+import { WrapperStyles } from '../../wrappers/Wrapper';
 
 function Select(props) {
   const { label, id, title, options, onSelect, required } = props;
@@ -28,7 +29,7 @@ function Select(props) {
         </DropdownHeader>
         {open && (
           <DropdownOptionsContainer>
-            <DropdownOptions>
+            <DropdownOptions size="0.5rem">
               {options.map((option) =>
                 option === selectedOption ? (
                   <DropdownOptionSelected
@@ -99,14 +100,7 @@ const DropdownOptions = styled.ul`
   background-color: ${({ theme }) => theme.card};
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.25);
   font-weight: 700;
-
-  & > * {
-    margin-bottom: 0.5rem;
-  }
-
-  & > :last-child {
-    margin-bottom: 0;
-  }
+  ${WrapperStyles};
 `;
 
 const DropdownOption = styled.li`
