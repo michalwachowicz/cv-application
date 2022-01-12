@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Input from '../elements/Input';
+import Input from '../elements/inputs/Input';
 import InputContainer from '../containers/InputContainer';
 import InputsWrapper from '../wrappers/InputsWrapper';
-import Select from '../elements/Select';
-import { SuccessButton } from '../elements/UIButton';
+import Select from '../elements/inputs/Select';
+import { SuccessButton } from '../elements/buttons/UIButton';
 import ButtonContainer from '../containers/ButtonContainer';
-import ImageInput from '../elements/ImageInput';
+import ImageInput from '../elements/inputs/ImageInput';
 
 function Personal(props) {
   const { onRetrieveData, onUploadImage, onClickNext, userPhoto } = props;

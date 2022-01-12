@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Personal from '../pages/Personal';
 import Experience from '../pages/Experience';
 import DownloadCV from '../pages/DownloadCV';
-import CVButton from '../elements/CVButton';
+import CVButton from '../elements/buttons/CVButton';
 
 function MainContent(props) {
   const {

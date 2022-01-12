@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Label } from './InputStyles';
-import ImageIcon from './icons/ImageIcon';
-import DeleteIcon from './icons/DeleteIcon';
+import ImageIcon from '../icons/ImageIcon';
+import DeleteIcon from '../icons/DeleteIcon';
 
 function ImageInput({ image, onUploadImage }) {
   const uploadImage = (e) => {

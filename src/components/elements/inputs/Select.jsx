@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import uniqid from 'uniqid';
 import { Field, Label, LabelRequired } from './InputStyles';
-import dropdownSvg from '../../assets/dropdown.svg';
+import dropdownSvg from '../../../assets/dropdown.svg';
 
 function Select(props) {
   const { label, id, title, options, onSelect, required } = props;
