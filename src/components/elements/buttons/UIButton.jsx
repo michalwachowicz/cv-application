@@ -4,7 +4,7 @@ const Button = styled.button`
   padding: 1rem 4rem;
   border: none;
   border-radius: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   cursor: pointer;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'inherit')};
