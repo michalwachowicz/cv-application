@@ -7,6 +7,7 @@ const Button = styled.button`
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'inherit')};
 
   @media (max-width: 480px) {
     width: 100%;
