@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import { Field, Label } from './InputStyles';
 
 function TextArea(props) {
-  const { id, value, label, placeholder, onFocusLeft } = props;
+  const { id, objectKey, value, label, placeholder, onFocusLeft } = props;
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
       <TextAreaField
-        id={id}
+        id={objectKey || id}
         defaultValue={value || ''}
         placeholder={placeholder}
-        onBlur={onFocusLeft}
+        onBlur={(e) =>
+          onFocusLeft({ id: objectKey || id, value: e.target.value })
+        }
       />
     </div>
   );
@@ -20,6 +22,7 @@ function TextArea(props) {
 
 TextArea.propTypes = {
   id: PropTypes.string.isRequired,
+  objectKey: PropTypes.string,
   value: PropTypes.string,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
@@ -27,6 +30,7 @@ TextArea.propTypes = {
 };
 
 TextArea.defaultProps = {
+  objectKey: null,
   value: null,
   placeholder: null,
 };
