@@ -61,7 +61,7 @@ Select.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.arrayOf(PropTypes.any).isRequired,
   onSelect: PropTypes.func.isRequired,
   required: PropTypes.bool,
 };
