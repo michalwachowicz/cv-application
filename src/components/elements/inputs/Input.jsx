@@ -4,8 +4,16 @@ import styled from 'styled-components';
 import { Field, Label, LabelRequired } from './InputStyles';
 
 function Input(props) {
-  const { label, type, id, objectKey, placeholder, required, onFocusLeft } =
-    props;
+  const {
+    label,
+    type,
+    value,
+    id,
+    objectKey,
+    placeholder,
+    required,
+    onFocusLeft,
+  } = props;
   return (
     <div>
       {required || <Label htmlFor={id}>{label}</Label>}
@@ -14,6 +22,7 @@ function Input(props) {
         type={type}
         id={id}
         name={id}
+        defaultValue={value || ''}
         placeholder={placeholder}
         required={required}
         onBlur={(e) =>
@@ -27,6 +36,7 @@ function Input(props) {
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  value: PropTypes.string,
   id: PropTypes.string.isRequired,
   objectKey: PropTypes.string,
   placeholder: PropTypes.string,
@@ -36,6 +46,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   objectKey: null,
+  value: null,
   placeholder: null,
   required: false,
 };

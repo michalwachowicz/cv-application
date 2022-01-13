@@ -7,9 +7,9 @@ import dropdownSvg from '../../../assets/dropdown.svg';
 import { WrapperStyles } from '../../wrappers/Wrapper';
 
 function Select(props) {
-  const { label, id, title, options, onSelect, required } = props;
+  const { label, id, title, value, options, onSelect, required } = props;
   const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(title);
+  const [selectedOption, setSelectedOption] = useState(value);
 
   const toggle = () => setOpen((prevState) => !prevState);
   const selectOption = (option) => {
@@ -61,6 +61,7 @@ Select.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  value: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.any).isRequired,
   onSelect: PropTypes.func.isRequired,
   required: PropTypes.bool,
@@ -68,6 +69,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
   label: null,
+  value: null,
   required: false,
 };
 
