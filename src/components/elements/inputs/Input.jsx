@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { Field, Label, LabelRequired } from './InputStyles';
 
 function Input(props) {
-  const { label, type, id, required, onFocusLeft } = props;
+  const { label, type, id, objectKey, placeholder, required, onFocusLeft } =
+    props;
   return (
     <div>
       {required || <Label htmlFor={id}>{label}</Label>}
@@ -13,8 +14,11 @@ function Input(props) {
         type={type}
         id={id}
         name={id}
+        placeholder={placeholder}
         required={required}
-        onBlur={(e) => onFocusLeft({ id, value: e.target.value })}
+        onBlur={(e) =>
+          onFocusLeft({ id: objectKey || id, value: e.target.value })
+        }
       />
     </div>
   );
@@ -24,18 +28,27 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  objectKey: PropTypes.string,
+  placeholder: PropTypes.string,
   onFocusLeft: PropTypes.func.isRequired,
   required: PropTypes.bool,
 };
 
 Input.defaultProps = {
+  objectKey: null,
+  placeholder: null,
   required: false,
 };
 
 const InputField = styled.input`
   ${Field}
+
   &::-webkit-date-and-time-value {
     text-align: left;
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.textContent};
   }
 `;
 

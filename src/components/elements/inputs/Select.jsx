@@ -20,8 +20,12 @@ function Select(props) {
 
   return (
     <div>
-      {required || <Label htmlFor={id}>{label}</Label>}
-      {!required || <LabelRequired htmlFor={id}>{label}</LabelRequired>}
+      {label && (
+        <>
+          {required || <Label htmlFor={id}>{label}</Label>}
+          {!required || <LabelRequired htmlFor={id}>{label}</LabelRequired>}
+        </>
+      )}
       <DropdownContainer>
         <DropdownHeader onClick={toggle}>
           <div>{selectedOption || title}</div>
@@ -54,7 +58,7 @@ function Select(props) {
 }
 
 Select.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -63,6 +67,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+  label: null,
   required: false,
 };
 
@@ -94,6 +99,8 @@ const DropdownOptionsContainer = styled.div`
 `;
 
 const DropdownOptions = styled.ul`
+  max-height: 10rem;
+  overflow-y: scroll;
   padding: 0.5rem;
   border-radius: 1rem;
   list-style: none;
