@@ -6,8 +6,10 @@ import Navigation from './Navigation';
 import Container from './containers/Container';
 import MainCard from './main/MainCard';
 import { getCurrentTabItemIndex, setCurrentTabItem } from '../util/tabUtil';
+import ErrorAlert from './elements/ErrorAlert';
 
 function App() {
+  const [error, setError] = useState(null);
   const [theme, setTheme] = useState('dark');
   const [userData, setUserData] = useState({});
   const [tabBarItems, setTabBarItems] = useState([
@@ -26,8 +28,11 @@ function App() {
   const setCurrentPage = (index) => {
     if (index === getCurrentTabItemIndex(tabBarItems)) return;
     for (const field of requiredFields) {
-      if (!userData[field]) {
-        // TODO: Display Error Alert
+      if (!userData[field] || !error) {
+        setError('You have to enter values to all required fields');
+        setTimeout(() => {
+          setError(null);
+        }, 2000);
         return;
       }
     }
@@ -81,6 +86,7 @@ function App() {
             }}
           />
         </Container>
+        <ErrorAlert message={error} />
         <GlobalStyles />
       </>
     </ThemeProvider>
