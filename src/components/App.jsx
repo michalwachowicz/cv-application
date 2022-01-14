@@ -5,7 +5,7 @@ import { GlobalStyles, lightTheme, darkTheme } from '../themes';
 import Navigation from './Navigation';
 import Container from './containers/Container';
 import MainCard from './main/MainCard';
-import { getCurrentTabItemId, setCurrentTabItem } from '../util/tabUtil';
+import { getCurrentTabItemIndex, setCurrentTabItem } from '../util/tabUtil';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -15,9 +15,15 @@ function App() {
     { title: 'Experience', active: false, id: uniqid() },
     { title: 'Download CV', active: false, id: uniqid() },
   ]);
+  const requiredFields = [
+    'firstName',
+    'lastName',
+    'email',
+    'birthdate',
+    'gender',
+  ];
 
   const setCurrentPage = (index) => {
-    // TODO: Check if required fields are set
     setTabBarItems(setCurrentTabItem(tabBarItems, index));
   };
 
@@ -54,7 +60,7 @@ function App() {
         <Container>
           <Navigation onThemeChange={toggleTheme} theme={theme} />
           <MainCard
-            index={getCurrentTabItemId(tabBarItems)}
+            index={getCurrentTabItemIndex(tabBarItems)}
             userData={Object.create(userData)}
             tabBarItems={tabBarItems}
             onCurrentChange={setCurrentPage}
