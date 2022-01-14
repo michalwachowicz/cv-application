@@ -21,6 +21,7 @@ Navigation.propTypes = {
 const NavContainer = styled.nav`
   display: flex;
   align-items: center;
+  margin-bottom: 5rem;
 `;
 
 const H1 = styled.h1`

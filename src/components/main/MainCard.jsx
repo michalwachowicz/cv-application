@@ -44,7 +44,7 @@ MainCard.propTypes = {
 
 const Main = styled.main`
   width: 100%;
-  margin-top: 5rem;
+  //margin-top: 5rem;
 `;
 
 export default MainCard;
