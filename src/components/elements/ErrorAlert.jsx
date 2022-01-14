@@ -46,7 +46,10 @@ const popupAnimation = keyframes`
 
 const ErrorContainer = styled.div`
   position: fixed;
-  inset: 90vh 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  inset: 0 0 5vh;
   padding: 0 1rem;
 `;
 
@@ -56,7 +59,6 @@ const ErrorPopup = styled.div`
   max-width: 768px;
   width: 100%;
   padding: 0.5rem;
-  margin: 0 auto;
   border-radius: 1rem;
   background-color: #fa5252;
   animation: ${popupAnimation} 2s ease;
