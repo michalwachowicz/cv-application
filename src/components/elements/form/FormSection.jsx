@@ -49,7 +49,7 @@ function FormSection(props) {
               <FormListItem
                 key={item.id}
                 title={formatTitle(item, itemTitle)}
-                subtitle={formatTitle(item, itemSubtitle)}
+                subtitle={itemSubtitle ? formatTitle(item, itemSubtitle) : null}
                 onEdit={() => updateIdHandler(item.id)}
                 onDelete={() => deleteHandler(item.id)}
               />
@@ -77,7 +77,7 @@ FormSection.propTypes = {
   buttonTitle: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   itemTitle: PropTypes.string.isRequired,
-  itemSubtitle: PropTypes.string.isRequired,
+  itemSubtitle: PropTypes.string,
   onSubmit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onUpdateId: PropTypes.func.isRequired,
@@ -89,6 +89,7 @@ FormSection.propTypes = {
 
 FormSection.defaultProps = {
   id: null,
+  itemSubtitle: null,
 };
 
 const FormSectionContainer = styled.section`

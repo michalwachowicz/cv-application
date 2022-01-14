@@ -10,7 +10,7 @@ function FormListItem(props) {
     <ListItem>
       <div>
         <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
+        {subtitle && <Subtitle>{subtitle}</Subtitle>}
       </div>
       <Buttons>
         <Button onClick={onEdit}>
