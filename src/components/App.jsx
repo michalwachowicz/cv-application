@@ -63,6 +63,9 @@ function App() {
             }}
             onRetrieveData={updateUserData}
             onUploadImage={updatePhoto}
+            onDownloadCV={() => {
+              // TODO: Create download CV logic
+            }}
           />
         </Container>
         <GlobalStyles />

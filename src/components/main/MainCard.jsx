@@ -12,6 +12,7 @@ function MainCard(props) {
     onDisplayCV,
     onRetrieveData,
     onUploadImage,
+    onDownloadCV,
     index,
   } = props;
   return (
@@ -24,6 +25,7 @@ function MainCard(props) {
         onRetrieveData={onRetrieveData}
         onChangePage={onCurrentChange}
         onUploadImage={onUploadImage}
+        onDownloadCV={onDownloadCV}
       />
     </Main>
   );
@@ -36,6 +38,7 @@ MainCard.propTypes = {
   onDisplayCV: PropTypes.func.isRequired,
   onRetrieveData: PropTypes.func.isRequired,
   onUploadImage: PropTypes.func.isRequired,
+  onDownloadCV: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };
 
