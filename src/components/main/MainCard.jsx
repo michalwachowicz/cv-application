@@ -6,12 +6,12 @@ import TabBar, { itemsArray } from '../tab/TabBar';
 
 function MainCard(props) {
   const {
+    userData,
     tabBarItems,
     onCurrentChange,
     onDisplayCV,
     onRetrieveData,
     onUploadImage,
-    userPhoto,
     index,
   } = props;
   return (
@@ -19,28 +19,24 @@ function MainCard(props) {
       <TabBar items={tabBarItems} onCurrentChange={onCurrentChange} />
       <MainContent
         index={index}
+        userData={userData}
         onDisplayCV={onDisplayCV}
         onRetrieveData={onRetrieveData}
         onChangePage={onCurrentChange}
         onUploadImage={onUploadImage}
-        userPhoto={userPhoto}
       />
     </Main>
   );
 }
 
 MainCard.propTypes = {
+  userData: PropTypes.objectOf(PropTypes.object).isRequired,
   tabBarItems: itemsArray.isRequired,
   onCurrentChange: PropTypes.func.isRequired,
   onDisplayCV: PropTypes.func.isRequired,
   onRetrieveData: PropTypes.func.isRequired,
   onUploadImage: PropTypes.func.isRequired,
-  userPhoto: PropTypes.string,
   index: PropTypes.number.isRequired,
-};
-
-MainCard.defaultProps = {
-  userPhoto: null,
 };
 
 const Main = styled.main`

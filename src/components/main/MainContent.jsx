@@ -9,25 +9,34 @@ import CVButton from '../elements/buttons/CVButton';
 function MainContent(props) {
   const {
     index,
+    userData,
     onDisplayCV,
     onRetrieveData,
     onUploadImage,
     onChangePage,
-    userPhoto,
   } = props;
   const pages = [
     {
       title: 'Personal Information',
       page: (
         <Personal
+          userData={userData}
           onRetrieveData={onRetrieveData}
           onClickNext={() => onChangePage(1)}
           onUploadImage={onUploadImage}
-          userPhoto={userPhoto}
         />
       ),
     },
-    { title: 'Experience', page: <Experience /> },
+    {
+      title: 'Experience',
+      page: (
+        <Experience
+          userData={userData}
+          onRetrieveData={onRetrieveData}
+          onChangePage={onChangePage}
+        />
+      ),
+    },
     { title: 'DownloadCV', page: <DownloadCV /> },
   ];
   return (
@@ -43,15 +52,11 @@ function MainContent(props) {
 
 MainContent.propTypes = {
   index: PropTypes.number.isRequired,
+  userData: PropTypes.objectOf(PropTypes.object).isRequired,
   onDisplayCV: PropTypes.func.isRequired,
   onRetrieveData: PropTypes.func.isRequired,
   onUploadImage: PropTypes.func.isRequired,
   onChangePage: PropTypes.func.isRequired,
-  userPhoto: PropTypes.string,
-};
-
-MainContent.defaultProps = {
-  userPhoto: null,
 };
 
 const MainContentContainer = styled.div`

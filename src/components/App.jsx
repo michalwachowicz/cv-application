@@ -9,7 +9,7 @@ import { getCurrentTabItemId, setCurrentTabItem } from '../util/tabUtil';
 
 function App() {
   const [theme, setTheme] = useState('dark');
-  const [userPhoto, setUserPhoto] = useState(null);
+  const [userData, setUserData] = useState({});
   const [tabBarItems, setTabBarItems] = useState([
     { title: 'Personal', active: true, id: uniqid() },
     { title: 'Experience', active: false, id: uniqid() },
@@ -39,9 +39,13 @@ function App() {
     }
   }, []);
 
+  const updateUserData = ({ id, value }) => {
+    setUserData((prevState) => ({ ...prevState, [id]: value }));
+  };
+
   const updatePhoto = (url) => {
-    if (userPhoto) URL.revokeObjectURL(userPhoto);
-    setUserPhoto(url);
+    if (userData.photo) URL.revokeObjectURL(userData.photo);
+    setUserData((prevState) => ({ ...prevState, photo: url }));
   };
 
   return (
@@ -50,16 +54,14 @@ function App() {
         <Container>
           <Navigation onThemeChange={toggleTheme} theme={theme} />
           <MainCard
+            index={getCurrentTabItemId(tabBarItems)}
+            userData={Object.create(userData)}
             tabBarItems={tabBarItems}
             onCurrentChange={setCurrentPage}
             onDisplayCV={() => {
               // TODO: Show CV Card
             }}
-            onRetrieveData={() => {
-              // TODO: Add retrieved data to CV Card
-            }}
-            userPhoto={userPhoto}
-            index={getCurrentTabItemId(tabBarItems)}
+            onRetrieveData={updateUserData}
             onUploadImage={updatePhoto}
           />
         </Container>

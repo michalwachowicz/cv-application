@@ -10,24 +10,29 @@ import ImageInput from '../elements/inputs/ImageInput';
 import { Wrapper } from '../wrappers/Wrapper';
 
 function Personal(props) {
-  const { onRetrieveData, onUploadImage, onClickNext, userPhoto } = props;
+  const { userData, onRetrieveData, onUploadImage, onClickNext } = props;
+  const { photo } = userData;
   return (
     <ContentWrapper>
-      <ImageInput image={userPhoto} onUploadImage={onUploadImage} />
+      <ImageInput image={photo} onUploadImage={onUploadImage} />
       <div>
         <Wrapper size="2rem">
           <InputContainer>
             <Input
               type="text"
               id="first-name"
+              objectKey="firstName"
               label="First Name"
+              value={userData.firstName}
               onFocusLeft={onRetrieveData}
               required
             />
             <Input
               type="text"
               id="last-name"
+              objectKey="lastName"
               label="Last Name"
+              value={userData.lastName}
               onFocusLeft={onRetrieveData}
               required
             />
@@ -37,6 +42,7 @@ function Personal(props) {
               type="email"
               id="email"
               label="Email Address"
+              value={userData.email}
               onFocusLeft={onRetrieveData}
               required
             />
@@ -44,6 +50,7 @@ function Personal(props) {
               type="tel"
               id="telephone"
               label="Telephone Number"
+              value={userData.telephone}
               onFocusLeft={onRetrieveData}
             />
           </InputContainer>
@@ -52,6 +59,7 @@ function Personal(props) {
               type="date"
               id="birthdate"
               label="Date of Birth"
+              value={userData.birthdate}
               onFocusLeft={onRetrieveData}
               required
             />
@@ -60,6 +68,7 @@ function Personal(props) {
               label="Gender"
               options={['Male', 'Female', 'Non-binary']}
               title="Select Gender"
+              value={userData.gender}
               onSelect={onRetrieveData}
               required
             />
@@ -69,12 +78,14 @@ function Personal(props) {
               type="text"
               id="country"
               label="Country"
+              value={userData.country}
               onFocusLeft={onRetrieveData}
             />
             <Input
               type="text"
               id="city"
               label="City / Town"
+              value={userData.city}
               onFocusLeft={onRetrieveData}
             />
           </InputContainer>
@@ -83,12 +94,14 @@ function Personal(props) {
               type="text"
               id="linkedin"
               label="LinkedIn"
+              value={userData.linkedin}
               onFocusLeft={onRetrieveData}
             />
             <Input
               type="url"
               id="website"
               label="Website"
+              value={userData.website}
               onFocusLeft={onRetrieveData}
             />
           </InputContainer>
@@ -113,14 +126,10 @@ const ContentWrapper = styled.div`
 `;
 
 Personal.propTypes = {
+  userData: PropTypes.objectOf(PropTypes.object).isRequired,
   onRetrieveData: PropTypes.func.isRequired,
   onUploadImage: PropTypes.func.isRequired,
   onClickNext: PropTypes.func.isRequired,
-  userPhoto: PropTypes.string,
-};
-
-Personal.defaultProps = {
-  userPhoto: null,
 };
 
 export default Personal;
