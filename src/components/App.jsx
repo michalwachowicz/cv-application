@@ -7,9 +7,11 @@ import Container from './containers/Container';
 import MainCard from './main/MainCard';
 import { getCurrentTabItemIndex, setCurrentTabItem } from '../util/tabUtil';
 import ErrorAlert from './elements/ErrorAlert';
+import CVPreview from './cv/CVPreview';
 
 function App() {
   const [error, setError] = useState(null);
+  const [mainOpen, setMainOpen] = useState(true);
   const [theme, setTheme] = useState('dark');
   const [userData, setUserData] = useState({});
   const [tabBarItems, setTabBarItems] = useState([
@@ -71,20 +73,21 @@ function App() {
       <>
         <Container>
           <Navigation onThemeChange={toggleTheme} theme={theme} />
-          <MainCard
-            index={getCurrentTabItemIndex(tabBarItems)}
-            userData={Object.create(userData)}
-            tabBarItems={tabBarItems}
-            onCurrentChange={setCurrentPage}
-            onDisplayCV={() => {
-              // TODO: Show CV Card
-            }}
-            onRetrieveData={updateUserData}
-            onUploadImage={updatePhoto}
-            onDownloadCV={() => {
-              // TODO: Create download CV logic
-            }}
-          />
+          {mainOpen && (
+            <MainCard
+              index={getCurrentTabItemIndex(tabBarItems)}
+              userData={Object.create(userData)}
+              tabBarItems={tabBarItems}
+              onCurrentChange={setCurrentPage}
+              onDisplayCV={() => setMainOpen(false)}
+              onRetrieveData={updateUserData}
+              onUploadImage={updatePhoto}
+              onDownloadCV={() => {
+                // TODO: Create download CV logic
+              }}
+            />
+          )}
+          {mainOpen || <CVPreview onClose={() => setMainOpen(true)} />}
         </Container>
         <ErrorAlert message={error} />
         <GlobalStyles />
