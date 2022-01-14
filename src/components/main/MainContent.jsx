@@ -5,6 +5,7 @@ import Personal from '../pages/Personal';
 import Experience from '../pages/Experience';
 import DownloadCV from '../pages/DownloadCV';
 import CVButton from '../elements/buttons/CVButton';
+import MainContentContainer from '../containers/MainContentContainer';
 
 function MainContent(props) {
   const {
@@ -65,16 +66,6 @@ MainContent.propTypes = {
   onDownloadCV: PropTypes.func.isRequired,
   onChangePage: PropTypes.func.isRequired,
 };
-
-const MainContentContainer = styled.div`
-  padding: 2rem;
-  border-radius: 0 0 1rem 1rem;
-  background-color: ${({ theme }) => theme.card};
-
-  @media (max-width: 480px) {
-    padding: 1rem;
-  }
-`;
 
 const Header = styled.header`
   display: flex;
