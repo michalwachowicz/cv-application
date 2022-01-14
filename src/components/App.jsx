@@ -24,6 +24,13 @@ function App() {
   ];
 
   const setCurrentPage = (index) => {
+    if (index === getCurrentTabItemIndex(tabBarItems)) return;
+    for (const field of requiredFields) {
+      if (!userData[field]) {
+        // TODO: Display Error Alert
+        return;
+      }
+    }
     setTabBarItems(setCurrentTabItem(tabBarItems, index));
   };
 
