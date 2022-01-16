@@ -16,8 +16,6 @@ const YEARS = new Array(60)
   .fill(new Date().getFullYear())
   .map((year, index) => year - index);
 const formatDate = (month, year) =>
-  `${month && month.length > 0 ? month.slice(0, 3) : ''}${
-    month && year ? ' ' : ''
-  }${year}`;
+  `${month ? month.slice(0, 3) : ''}${month && year ? ' ' : ''}${year || ''}`;
 
 export { MONTHS, YEARS, formatDate };
