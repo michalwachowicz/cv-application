@@ -12,7 +12,6 @@ function MainCard(props) {
     onDisplayCV,
     onRetrieveData,
     onUploadImage,
-    onDownloadCV,
     index,
   } = props;
   return (
