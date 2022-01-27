@@ -14,7 +14,6 @@ function MainContent(props) {
     onDisplayCV,
     onRetrieveData,
     onUploadImage,
-    onDownloadCV,
     onChangePage,
   } = props;
   const pages = [
@@ -41,9 +40,7 @@ function MainContent(props) {
     },
     {
       title: 'Download CV',
-      page: (
-        <DownloadCV onChangePage={onChangePage} onDownloadCV={onDownloadCV} />
-      ),
+      page: <DownloadCV onChangePage={onChangePage} userData={userData} />,
     },
   ];
   return (
@@ -63,7 +60,6 @@ MainContent.propTypes = {
   onDisplayCV: PropTypes.func.isRequired,
   onRetrieveData: PropTypes.func.isRequired,
   onUploadImage: PropTypes.func.isRequired,
-  onDownloadCV: PropTypes.func.isRequired,
   onChangePage: PropTypes.func.isRequired,
 };
 

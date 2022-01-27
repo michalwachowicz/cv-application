@@ -29,13 +29,15 @@ function App() {
 
   const setCurrentPage = (index) => {
     if (index === getCurrentTabItemIndex(tabBarItems)) return;
-    for (const field of requiredFields) {
-      if (!userData[field] || !error) {
-        setError('You have to enter values to all required fields');
-        setTimeout(() => {
-          setError(null);
-        }, 2000);
-        return;
+    if (!error) {
+      for (const field of requiredFields) {
+        if (!userData[field]) {
+          setError('You have to enter values to all required fields');
+          setTimeout(() => {
+            setError(null);
+          }, 2000);
+          return;
+        }
       }
     }
     setTabBarItems(setCurrentTabItem(tabBarItems, index));
@@ -82,12 +84,14 @@ function App() {
               onDisplayCV={() => setMainOpen(false)}
               onRetrieveData={updateUserData}
               onUploadImage={updatePhoto}
-              onDownloadCV={() => {
-                // TODO: Create download CV logic
-              }}
             />
           )}
-          {mainOpen || <CVPreview onClose={() => setMainOpen(true)} />}
+          {mainOpen || (
+            <CVPreview
+              userData={Object.create(userData)}
+              onClose={() => setMainOpen(true)}
+            />
+          )}
         </Container>
         <ErrorAlert message={error} />
         <GlobalStyles />
