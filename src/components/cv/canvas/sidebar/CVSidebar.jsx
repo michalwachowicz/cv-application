@@ -27,7 +27,7 @@ function CVSidebar(props) {
   }, [handler, personalRef, skillsRef, languagesRef, hobbiesRef]);
 
   return (
-    <Layer x={x} y={y} width={width}>
+    <Layer x={x} y={y}>
       {image && (
         <Group
           clipFunc={(ctx) => {

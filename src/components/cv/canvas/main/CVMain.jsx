@@ -23,7 +23,7 @@ function CVMain(props) {
   }, [handler, basicRef, workRef, educationRef, trainingsRef]);
 
   return (
-    <Layer x={x} y={y} width={width}>
+    <Layer x={x} y={y}>
       <CVMainBasic
         ref={setBasicRef}
         x={handler.x}
