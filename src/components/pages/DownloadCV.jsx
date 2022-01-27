@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import completeSvg from '../../assets/complete.svg';
 import ButtonContainer from '../containers/ButtonContainer';
 import { SecondaryButton, SuccessButton } from '../elements/buttons/UIButton';
+import downloadCV from '../../util/cvDownloadUtil';
 
 function DownloadCV(props) {
-  const { onChangePage, onDownloadCV } = props;
+  const { userData, onChangePage } = props;
   return (
     <div>
       <Image src={completeSvg} alt="Illustration of two happy people" />
@@ -18,15 +19,17 @@ function DownloadCV(props) {
       </TextContainer>
       <ButtonContainer justify="center" direction="column-reverse">
         <SecondaryButton onClick={() => onChangePage(1)}>Back</SecondaryButton>
-        <SuccessButton onClick={onDownloadCV}>Download CV</SuccessButton>
+        <SuccessButton onClick={() => downloadCV(userData)}>
+          Download CV
+        </SuccessButton>
       </ButtonContainer>
     </div>
   );
 }
 
 DownloadCV.propTypes = {
+  userData: PropTypes.objectOf(PropTypes.object).isRequired,
   onChangePage: PropTypes.func.isRequired,
-  onDownloadCV: PropTypes.func.isRequired,
 };
 
 const Image = styled.img`
