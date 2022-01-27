@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Group } from 'react-konva';
 import PropTypes from 'prop-types';
 import { textItems } from '../CVElements';
@@ -24,51 +24,32 @@ const CVMainSection = React.forwardRef((props, ref) => {
   } = props;
   const { h2 } = textItems;
   const handler = new CanvasHandler(0, 0);
-  const [listRef, setListRef] = useState([]);
 
   useEffect(() => {
     const clearHandler = () => {
       handler.x = 0;
       handler.y = 0;
     };
-
-    const updateList = () => {
-      if (!list || list.length < 1) {
-        if (listRef !== []) return;
-
-        setListRef([]);
-        return;
-      }
-
-      setListRef(new Array(list.length).fill(null));
-    };
-
     clearHandler();
-    updateList();
   }, [list]);
 
-  const addToListRef = (element, index) => {
-    if (element) {
-      setListRef((prevState) => {
-        const prevList = prevState;
-        prevList[index] = element;
+  const updatePosition = (element) => {
+    if (!element) return;
 
-        return prevList;
-      });
-    }
+    element.position({
+      x: handler.x,
+      y: handler.updateY(element.getClientRect().height + 24),
+    });
   };
+
   return (
     list &&
     list.length > 0 && (
       <Group x={x} y={y} ref={ref}>
         {h2.element(handler.x, handler.updateY(h2.height + 24), title)}
-        {list.map((item, index) => (
+        {list.map((item) => (
           <ListItem
-            ref={(r) => addToListRef(r, index)}
-            x={handler.x}
-            y={handler.updateY(
-              listRef[index] ? listRef[index].getClientRect().height + 24 : 0,
-            )}
+            ref={updatePosition}
             title={item[itemTitle]}
             width={width}
             startMonth={item[startMonth]}
@@ -115,8 +96,6 @@ CVMainSection.defaultProps = {
 
 const ListItem = React.forwardRef((props, ref) => {
   const {
-    x,
-    y,
     width,
     startMonth,
     startYear,
@@ -131,7 +110,7 @@ const ListItem = React.forwardRef((props, ref) => {
   const handler = new CanvasHandler(0, 0);
 
   return (
-    <Group x={x} y={y} ref={ref}>
+    <Group ref={ref}>
       {((startMonth && startYear) || (endMonth && endYear)) &&
         p.element(
           handler.x,
@@ -146,8 +125,8 @@ const ListItem = React.forwardRef((props, ref) => {
         p.element(
           handler.x,
           handler.updateY(19 + 16),
-          `${firstInfo || ' '}${firstInfo && secondInfo && ' / '}${
-            secondInfo || ' '
+          `${firstInfo || ''}${firstInfo && secondInfo && ' / '}${
+            secondInfo || ''
           }`,
         )}
       {!description || (
@@ -161,8 +140,6 @@ const ListItem = React.forwardRef((props, ref) => {
 });
 
 ListItem.propTypes = {
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   startMonth: PropTypes.string,
