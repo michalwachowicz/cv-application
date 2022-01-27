@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Rect } from 'react-konva';
 import PropTypes from 'prop-types';
 
-function TextItem({ x, y, text, size, weight, fill }) {
+function TextItem({ x, y, text, size, weight, fill, width }) {
   return (
     <Text
       fontFamily="Roboto"
@@ -12,6 +12,7 @@ function TextItem({ x, y, text, size, weight, fill }) {
       x={x}
       y={y}
       fill={fill}
+      width={width}
     />
   );
 }
@@ -22,9 +23,10 @@ TextItem.propTypes = {
   text: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
   weight: PropTypes.string.isRequired,
+  width: PropTypes.number,
   fill: PropTypes.string,
 };
-TextItem.defaultProps = { fill: '#212529' };
+TextItem.defaultProps = { fill: '#212529', width: 1000 };
 
 const textItems = {
   h1: {
@@ -40,8 +42,16 @@ const textItems = {
     height: 38,
   },
   p: {
-    element: (x, y, text, weight = '400') => (
-      <TextItem x={x} y={y} text={text} size={16} weight={weight} />
+    element: (x, y, text, weight = '400', fill = '#212529', width = 1000) => (
+      <TextItem
+        x={x}
+        y={y}
+        text={text}
+        size={16}
+        weight={weight}
+        fill={fill}
+        width={width}
+      />
     ),
   },
 };
