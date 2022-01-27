@@ -6,12 +6,18 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.textColor};
     font-family: 'Roboto', sans-serif;
     transition: background-color 0.2s ease, color 0.2s ease;
+    overflow-x: hidden;
   }
   
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  
+  #cv {
+    position: absolute;
+    left: 200vw;
   }
 `;
 
