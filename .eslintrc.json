@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "import/no-absolute-path": "off",
+    "react/prop-types": "off"
+  },
+  "env": {
+    "browser": true
+  }
+}
