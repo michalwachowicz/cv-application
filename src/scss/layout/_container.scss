@@ -1,4 +1,11 @@
+@use "../abstracts/themes" as *;
+
 .page-wrapper {
+  @include themify(true) {
+    background-color: themed("background");
+    color: themed("text-main");
+  }
+
   width: 100vw;
   min-height: 100vh;
 }

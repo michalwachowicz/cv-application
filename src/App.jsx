@@ -5,7 +5,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
 
   return (
-    <div className="page-wrapper">
+    <div className={`page-wrapper ${darkMode ? "theme-dark" : ""}`}>
       <div className="container">
         <Header
           darkMode={darkMode}
