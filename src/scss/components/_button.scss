@@ -1,0 +1,48 @@
+.btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  &-theme {
+    position: relative;
+    width: 5rem;
+    height: 2.5rem;
+    background-color: red;
+    border-radius: 2rem;
+
+    &[aria-checked="true"] {
+      background: linear-gradient(45deg, #8b5cf6, #6d28d9);
+
+      .btn-theme-toggle {
+        transform: translate(calc(100% + 0.5rem), -50%);
+      }
+    }
+
+    &[aria-checked="false"] {
+      background: linear-gradient(45deg, #f59e0b, #fbbf24);
+
+      .btn-theme-toggle {
+        transform: translate(0, -50%);
+      }
+    }
+
+    &-toggle {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border-radius: 2rem;
+      width: 2rem;
+      height: 2rem;
+      top: 50%;
+      left: 0.25rem;
+      transition: transform 0.3s ease-in-out;
+
+      &-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+  }
+}
