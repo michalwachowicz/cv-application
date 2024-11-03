@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Header from "./components/layout/Header";
 
 function App() {
-  return <div>Hello, World!</div>;
+  const [darkMode, setDarkMode] = useState(true);
+
+  return (
+    <div className="page-wrapper">
+      <div className="container">
+        <Header
+          darkMode={darkMode}
+          onThemeSwitch={() => setDarkMode(!darkMode)}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default App;
