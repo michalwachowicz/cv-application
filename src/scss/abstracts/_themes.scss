@@ -2,10 +2,20 @@ $themes: (
   light: (
     background: #e5e7eb,
     text-main: #030712,
+    text-inactive: #6b7280,
+    card: #f9fafb,
+    card-inactive: #d1d5db,
+    card-counter-inactive: #6b7280,
+    card-counter-text-inactive: #d1d5db,
   ),
   dark: (
     background: #111827,
     text-main: #f9fafb,
+    text-inactive: #6b7280,
+    card: #374151,
+    card-inactive: #1f2937,
+    card-counter-inactive: #374151,
+    card-counter-text-inactive: #6b7280,
   ),
 );
 

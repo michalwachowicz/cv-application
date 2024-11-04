@@ -1,0 +1,55 @@
+@use "../abstracts/themes" as *;
+
+.nav {
+  &-list {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    counter-reset: item;
+
+    &-item {
+      @include themify {
+        background-color: themed("card");
+      }
+
+      padding: 1rem 2rem;
+      border-radius: 2rem 2rem 0 0;
+      flex: 1;
+      counter-increment: item;
+
+      &:not(&-active) {
+        @include themify {
+          background-color: themed("card-inactive");
+          color: themed("text-inactive");
+        }
+
+        .nav-list-item-title::before {
+          @include themify {
+            color: themed("card-counter-text-inactive");
+            background-color: themed("card-counter-inactive");
+          }
+        }
+      }
+
+      &-title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.25rem;
+
+        &::before {
+          content: counter(item);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #8b5cf6;
+          color: #fff;
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 2rem;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
