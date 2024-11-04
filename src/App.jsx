@@ -35,8 +35,11 @@ function App() {
   return (
     <Container darkMode={darkMode}>
       <Header darkMode={darkMode} onThemeSwitch={darkModeHandler} />
-      <Navigation activePage={activePage} pages={pages} />
-      <Main activePage={activePage} pages={pages} />
+
+      <div className="main-wrapper">
+        <Navigation activePage={activePage} pages={pages} />
+        <Main activePage={activePage} pages={pages} />
+      </div>
     </Container>
   );
 }
