@@ -1,0 +1,17 @@
+@mixin squared($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin min-squared($size) {
+  @include squared($size);
+
+  min-width: $size;
+  min-height: $size;
+}
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

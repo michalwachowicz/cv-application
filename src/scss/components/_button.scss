@@ -1,3 +1,5 @@
+@use "../abstracts/mixins" as *;
+
 .btn {
   cursor: pointer;
   background: none;
@@ -27,10 +29,9 @@
     }
 
     &-toggle {
+      @include flex-center();
+
       position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background-color: #fff;
       border-radius: 2rem;
       width: 2rem;
