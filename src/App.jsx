@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "./components/layout/Container";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
+import Main from "./components/layout/Main";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -35,6 +36,7 @@ function App() {
     <Container darkMode={darkMode}>
       <Header darkMode={darkMode} onThemeSwitch={darkModeHandler} />
       <Navigation activePage={activePage} pages={pages} />
+      <Main activePage={activePage} pages={pages} />
     </Container>
   );
 }
