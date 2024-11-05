@@ -1,0 +1,24 @@
+@use "../abstracts/themes" as *;
+
+.card {
+  @include themify {
+    background-color: themed("card");
+  }
+
+  padding: 2rem;
+  border-radius: 1rem;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-title {
+    font-size: 2rem;
+  }
+
+  &-main {
+    border-radius: 0 0 1rem 1rem;
+  }
+}
