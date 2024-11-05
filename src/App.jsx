@@ -6,6 +6,7 @@ import Main from "./components/layout/Main";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [previewOpened, setPreviewOpened] = useState(false);
   const [activePage, setActivePage] = useState(0);
 
   const pages = [
@@ -38,7 +39,12 @@ function App() {
 
       <div className="main-wrapper">
         <Navigation activePage={activePage} pages={pages} />
-        <Main activePage={activePage} pages={pages} />
+        <Main
+          activePage={activePage}
+          pages={pages}
+          previewOpened={previewOpened}
+          onPreviewOpen={() => setPreviewOpened(true)}
+        />
       </div>
     </Container>
   );

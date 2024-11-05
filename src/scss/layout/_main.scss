@@ -8,6 +8,12 @@
   padding: 2rem;
   border-radius: 0 0 1rem 1rem;
 
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &-title {
     font-size: 2rem;
   }
