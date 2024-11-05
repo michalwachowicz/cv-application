@@ -3,6 +3,7 @@ import Container from "./components/layout/Container";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Main from "./components/layout/Main";
+import Preview from "./components/layout/Preview";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -37,7 +38,7 @@ function App() {
     <Container darkMode={darkMode}>
       <Header darkMode={darkMode} onThemeSwitch={darkModeHandler} />
 
-      <div className="main-wrapper">
+      <div className={`main-wrapper ${previewOpened ? "hidden" : ""}`}>
         <Navigation activePage={activePage} pages={pages} />
         <Main
           activePage={activePage}
@@ -46,6 +47,11 @@ function App() {
           onPreviewOpen={() => setPreviewOpened(true)}
         />
       </div>
+
+      <Preview
+        hidden={!previewOpened}
+        onClose={() => setPreviewOpened(false)}
+      />
     </Container>
   );
 }
