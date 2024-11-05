@@ -10,9 +10,9 @@ export default function Main({
   const { title } = pages[activePage];
 
   return (
-    <main className="main">
-      <header className="main-header">
-        <h2 className="main-title">{title}</h2>
+    <main className="card card-main">
+      <header className="card-header">
+        <h2 className="card-title">{title}</h2>
         <PreviewButton opened={previewOpened} onOpen={onPreviewOpen} />
       </header>
     </main>
