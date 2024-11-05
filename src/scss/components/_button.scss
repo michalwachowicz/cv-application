@@ -5,6 +5,23 @@
   background: none;
   border: none;
 
+  &-preview {
+    @include flex-center();
+    @include min-squared(3rem);
+
+    background-color: #8b5cf6;
+    border-radius: 2rem;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &-img {
+      @include min-squared(1.25rem);
+    }
+  }
+
   &-theme {
     position: relative;
     width: 5rem;
