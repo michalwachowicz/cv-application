@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "./components/layout/Container";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
@@ -9,6 +9,9 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [previewOpened, setPreviewOpened] = useState(false);
   const [activePage, setActivePage] = useState(0);
+
+  const mainRef = useRef();
+  const previewRef = useRef();
 
   const pages = [
     { id: 0, title: "Personal" },
@@ -28,10 +31,28 @@ function App() {
   };
 
   useEffect(() => {
+    if (previewOpened) {
+      previewRef.current.querySelector(".btn-close").focus();
+    } else {
+      mainRef.current.querySelector(".btn-preview").focus();
+    }
+  }, [previewOpened]);
+
+  useEffect(() => {
     const darkModeValue = localStorage.darkMode;
 
     if (darkModeValue === undefined) localStorage.darkMode = true;
     else setDarkMode(darkModeValue === "true");
+
+    const focusableElements = document.body.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusableElements.length > 0) {
+      const focusableElement = focusableElements[0];
+
+      focusableElement.focus();
+      focusableElement.blur();
+    }
   }, []);
 
   return (
@@ -41,6 +62,7 @@ function App() {
       <div className={`main-wrapper ${previewOpened ? "hidden" : ""}`}>
         <Navigation activePage={activePage} pages={pages} />
         <Main
+          ref={mainRef}
           activePage={activePage}
           pages={pages}
           previewOpened={previewOpened}
@@ -49,6 +71,7 @@ function App() {
       </div>
 
       <Preview
+        ref={previewRef}
         hidden={!previewOpened}
         onClose={() => setPreviewOpened(false)}
       />
