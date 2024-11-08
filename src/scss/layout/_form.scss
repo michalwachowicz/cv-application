@@ -1,0 +1,24 @@
+.form {
+  &-personal {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 3rem;
+    margin-top: 3rem;
+
+    &-wrapper {
+      display: flex;
+      align-items: start;
+      width: 100%;
+      gap: 3rem;
+
+      &-inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        gap: 2rem 3rem;
+        flex: 1;
+      }
+    }
+  }
+}
