@@ -30,6 +30,10 @@
     display: none;
   }
 
+  span[aria-label="required"] {
+    color: #ef4444;
+  }
+
   &-select {
     position: relative;
 
