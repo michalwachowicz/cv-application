@@ -25,7 +25,7 @@
   }
 
   &-photo {
-    $size: 10rem;
+    $size: 10.5rem;
 
     &-placeholder {
       @include flex-center();
@@ -57,11 +57,12 @@
           background-color: themed("input-photo");
         }
       }
+    }
 
-      &-img {
-        @include squared($size);
-        border-radius: 1rem;
-      }
+    &-img {
+      @include squared($size);
+      margin-top: 0.5rem;
+      border-radius: 1rem;
     }
 
     input {
