@@ -20,6 +20,10 @@
     padding: 0.5rem 0.75rem;
     appearance: none;
 
+    &:focus {
+      outline: 2px solid #8b5cf6;
+    }
+
     @include themify {
       background-color: themed("input");
       color: themed("text-main");
