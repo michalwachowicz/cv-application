@@ -1,0 +1,64 @@
+@use "../abstracts/themes" as *;
+@use "../abstracts/mixins" as *;
+
+.input {
+  font-size: 1.25rem;
+
+  @include themify {
+    color: themed("text-label");
+  }
+
+  input {
+    display: block;
+    margin-top: 0.5rem;
+
+    @include themify {
+      background-color: themed("input");
+    }
+  }
+
+  &-photo {
+    $size: 10rem;
+
+    &-placeholder {
+      @include flex-center();
+      @include squared($size);
+
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 1rem;
+      font-weight: 700;
+      border: 2px dashed;
+      cursor: pointer;
+
+      @include themify {
+        background-color: themed("input");
+        border-color: themed("input-photo");
+        color: themed("input-photo");
+      }
+
+      &-picture {
+        content: "";
+        width: 5rem;
+        height: 5rem;
+
+        -webkit-mask: url("/profile.svg") no-repeat center;
+        mask: url("/profile.svg") no-repeat center;
+
+        @include themify {
+          background-color: themed("input-photo");
+        }
+      }
+
+      &-img {
+        @include squared($size);
+        border-radius: 1rem;
+      }
+    }
+
+    input {
+      display: none;
+    }
+  }
+}
