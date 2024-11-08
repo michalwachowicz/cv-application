@@ -8,7 +8,8 @@
     color: themed("text-label");
   }
 
-  input {
+  input,
+  select {
     display: block;
     margin-top: 0.5rem;
     width: 100%;
@@ -17,10 +18,38 @@
     border-radius: 1rem;
     font-size: 1.25rem;
     padding: 0.5rem 0.75rem;
+    appearance: none;
 
     @include themify {
       background-color: themed("input");
       color: themed("text-main");
+    }
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  &-select {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 1rem;
+      height: 0.6rem;
+      background-color: #8b5cf6;
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+      justify-self: end;
+      bottom: 1.15rem;
+      right: 0.75rem;
+    }
+
+    select {
+      &::-ms-expand {
+        display: none;
+      }
     }
   }
 
