@@ -1,9 +1,38 @@
 @use "../abstracts/mixins" as *;
+@use "../abstracts/themes" as *;
 
 .btn {
   cursor: pointer;
   background: none;
   border: none;
+
+  &-action {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1rem 5rem;
+    border-radius: 1rem;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &-positive {
+      background-color: #10b981;
+    }
+
+    &-negative {
+      background-color: #ef4444;
+    }
+
+    &-neutral {
+      @include themify {
+        background-color: themed("btn-neutral");
+        color: themed("btn-neutral-text");
+      }
+    }
+  }
 
   &-preview {
     @include flex-center();
