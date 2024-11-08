@@ -9,6 +9,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [previewOpened, setPreviewOpened] = useState(false);
   const [activePage, setActivePage] = useState(0);
+  const [data, setData] = useState({});
 
   const mainRef = useRef();
   const previewRef = useRef();
@@ -24,10 +25,11 @@ function App() {
     setDarkMode(!darkMode);
   };
 
-  // TODO: Change active page
-  // eslint-disable-next-line no-unused-vars
-  const pageChangeHandler = (pageId) => {
-    setActivePage(pageId);
+  const inputChangeHandler = (id, value) => {
+    const newData = { ...data, [id]: value };
+
+    localStorage.userData = JSON.stringify(newData);
+    setData(newData);
   };
 
   useEffect(() => {
@@ -39,11 +41,13 @@ function App() {
   }, [previewOpened]);
 
   useEffect(() => {
+    // Load theme preference from local storage
     const darkModeValue = localStorage.darkMode;
 
     if (darkModeValue === undefined) localStorage.darkMode = true;
     else setDarkMode(darkModeValue === "true");
 
+    // Reset focusable element on page load
     const focusableElements = document.body.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     );
@@ -53,6 +57,12 @@ function App() {
       focusableElement.focus();
       focusableElement.blur();
     }
+
+    // Load user data from local storage
+    const dataValue = localStorage.userData;
+
+    if (dataValue === undefined) localStorage.userData = JSON.stringify({});
+    else setData(JSON.parse(dataValue));
   }, []);
 
   return (
@@ -64,9 +74,12 @@ function App() {
         <Main
           ref={mainRef}
           activePage={activePage}
+          data={data}
           pages={pages}
           previewOpened={previewOpened}
+          onInputChange={inputChangeHandler}
           onPreviewOpen={() => setPreviewOpened(true)}
+          onNextPage={() => setActivePage(activePage + 1)}
         />
       </div>
 

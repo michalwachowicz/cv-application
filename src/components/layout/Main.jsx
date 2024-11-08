@@ -1,8 +1,20 @@
 import React from "react";
 import PreviewButton from "../buttons/PreviewButton";
+import PersonalForm from "../forms/PersonalForm";
 
 const Main = React.forwardRef(
-  ({ activePage, pages, previewOpened, onPreviewOpen }, ref) => {
+  (
+    {
+      data,
+      activePage,
+      pages,
+      previewOpened,
+      onInputChange,
+      onPreviewOpen,
+      onNextPage,
+    },
+    ref
+  ) => {
     const { title } = pages[activePage];
 
     return (
@@ -11,6 +23,14 @@ const Main = React.forwardRef(
           <h2 className="card-title">{title}</h2>
           <PreviewButton opened={previewOpened} onOpen={onPreviewOpen} />
         </header>
+
+        {activePage === 0 && (
+          <PersonalForm
+            data={data}
+            onChange={onInputChange}
+            onNext={onNextPage}
+          />
+        )}
       </main>
     );
   }
