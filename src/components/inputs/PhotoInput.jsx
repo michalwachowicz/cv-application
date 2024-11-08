@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function PhotoInput() {
-  const [imgSrc, setImgSrc] = useState(null);
-
+export default function PhotoInput({ image, onChange }) {
   const handlePhotoUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
 
-    reader.onloadend = () => {
-      setImgSrc(reader.result);
-    };
+    reader.onloadend = () => onChange("image", reader.result);
     reader.readAsDataURL(file);
   };
 
@@ -25,15 +21,13 @@ export default function PhotoInput() {
         accept="image/*"
         onChange={handlePhotoUpload}
       />
-      {!imgSrc && (
+      {!image && (
         <div className="input-photo-placeholder">
           <div className="input-photo-placeholder-picture" />
           Add Photo
         </div>
       )}
-      {imgSrc && (
-        <img className="input-photo-img" src={imgSrc} alt="Uploaded" />
-      )}
+      {image && <img className="input-photo-img" src={image} alt="Uploaded" />}
     </label>
   );
 }
