@@ -1,0 +1,9 @@
+@use "../abstracts/themes" as *;
+
+hr {
+  margin: 1.5rem 0;
+
+  @include themify {
+    border: 1px solid themed("card-inactive");
+  }
+}

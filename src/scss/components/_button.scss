@@ -15,7 +15,7 @@
     transition: transform 0.3s ease-in-out;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.015);
     }
 
     &-positive {
@@ -24,6 +24,11 @@
 
     &-negative {
       background-color: #ef4444;
+    }
+
+    &-primary {
+      width: 100%;
+      background-color: #8b5cf6;
     }
 
     &-neutral {
