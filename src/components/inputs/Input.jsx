@@ -5,6 +5,7 @@ export default function Input({
   type,
   label,
   value,
+  placeholder,
   onChange,
   required = false,
 }) {
@@ -14,6 +15,7 @@ export default function Input({
       <input
         type={type}
         value={value}
+        placeholder={placeholder}
         onChange={(e) => onChange(id, e.target.value)}
         required={required}
       />
