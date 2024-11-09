@@ -9,7 +9,8 @@
   }
 
   input,
-  select {
+  select,
+  textarea {
     display: block;
     margin-top: 0.5rem;
     width: 100%;
@@ -28,6 +29,11 @@
       background-color: themed("input");
       color: themed("text-main");
     }
+  }
+
+  textarea {
+    min-height: 7.5rem;
+    resize: none;
   }
 
   input[type="date"]::-webkit-calendar-picker-indicator {
