@@ -4,11 +4,13 @@ import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Main from "./components/layout/Main";
 import Preview from "./components/layout/Preview";
+import DeletePopup from "./components/popups/DeletePopup";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [previewOpened, setPreviewOpened] = useState(false);
   const [activePage, setActivePage] = useState(0);
+  const [deletedItem, setDeletedItem] = useState(null);
   const [data, setData] = useState({});
 
   const mainRef = useRef();
@@ -30,6 +32,11 @@ function App() {
 
     localStorage.userData = JSON.stringify(newData);
     setData(newData);
+  };
+
+  const deleteHandler = (item) => {
+    inputChangeHandler(item.id, item.list);
+    setDeletedItem(null);
   };
 
   useEffect(() => {
@@ -79,7 +86,11 @@ function App() {
           previewOpened={previewOpened}
           onInputChange={inputChangeHandler}
           onPreviewOpen={() => setPreviewOpened(true)}
+          onPreviousPage={() => setActivePage(activePage - 1)}
           onNextPage={() => setActivePage(activePage + 1)}
+          onDelete={(deleteId, newList) =>
+            setDeletedItem({ id: deleteId, list: newList })
+          }
         />
       </div>
 
@@ -88,6 +99,13 @@ function App() {
         hidden={!previewOpened}
         onClose={() => setPreviewOpened(false)}
       />
+      {deletedItem && (
+        <DeletePopup
+          item={deletedItem}
+          onCancel={() => setDeletedItem(null)}
+          onDelete={deleteHandler}
+        />
+      )}
     </Container>
   );
 }
