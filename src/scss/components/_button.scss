@@ -6,6 +6,16 @@
   background: none;
   border: none;
 
+  &-icon {
+    @include min-squared(1.5rem);
+
+    path {
+      @include themify {
+        fill: themed("text-label");
+      }
+    }
+  }
+
   &-action {
     font-size: 1.5rem;
     font-weight: 700;
