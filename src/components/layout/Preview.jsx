@@ -1,11 +1,12 @@
-// eslint-disable-next-line import/no-unresolved
-import closeIcon from "/close.svg";
+/* eslint-disable import/no-unresolved */
 import React from "react";
+import PreviewDocument from "./PreviewDocument";
+import closeIcon from "/close.svg";
 
-const Preview = React.forwardRef(({ hidden, onClose }, ref) => (
+const Preview = React.forwardRef(({ data, onClose }, ref) => (
   <section
     ref={ref}
-    className={`card card-preview ${hidden ? "hidden" : ""}`}
+    className="card card-preview"
     id="preview-cv"
     role="dialog"
     aria-modal="true"
@@ -24,7 +25,7 @@ const Preview = React.forwardRef(({ hidden, onClose }, ref) => (
         <img className="btn-close-img" src={closeIcon} alt="" />
       </button>
     </header>
-    {/* TODO: CV Preview */}
+    <PreviewDocument data={data} />
   </section>
 ));
 export default Preview;

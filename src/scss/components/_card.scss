@@ -21,4 +21,10 @@
   &-main {
     border-radius: 0 0 1rem 1rem;
   }
+
+  &-preview {
+    .preview {
+      margin-top: 2rem;
+    }
+  }
 }

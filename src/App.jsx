@@ -94,11 +94,14 @@ function App() {
         />
       </div>
 
-      <Preview
-        ref={previewRef}
-        hidden={!previewOpened}
-        onClose={() => setPreviewOpened(false)}
-      />
+      {previewOpened && (
+        <Preview
+          ref={previewRef}
+          data={data}
+          onClose={() => setPreviewOpened(false)}
+        />
+      )}
+
       {deletedItem && (
         <DeletePopup
           item={deletedItem}
