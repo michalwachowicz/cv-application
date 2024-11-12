@@ -14,4 +14,16 @@ describe("formatText", () => {
 
   it("returns empty string on non-existent values", () =>
     expect(formatText({ a: "Hello" }, "$[a] $[b]")).toBe("Hello "));
+
+  it("formats date object properly", () =>
+    expect(formatText({ a: { month: 0, year: 2024 } }, "$[a:date]")).toBe(
+      "Jan 2024"
+    ));
+
+  it("formats incorrect date object properly", () => {
+    expect(formatText({ a: { month: -1, year: 2022 } }, "$[a:date]")).toBe(
+      "2022"
+    );
+    expect(formatText({ a: {}, b: null }, "$[a:date] $[b:date]")).toBe(" ");
+  });
 });
