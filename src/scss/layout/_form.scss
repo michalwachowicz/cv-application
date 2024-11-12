@@ -65,6 +65,13 @@
     margin-top: 3rem;
   }
 
+  &-experience-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+  }
+
   &-personal {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,7 @@
 import React from "react";
 import PreviewButton from "../buttons/PreviewButton";
 import PersonalForm from "../forms/PersonalForm";
+import ExperienceForm from "../forms/ExperienceForm";
 
 const Main = React.forwardRef(
   (
@@ -11,7 +12,9 @@ const Main = React.forwardRef(
       previewOpened,
       onInputChange,
       onPreviewOpen,
+      onPreviousPage,
       onNextPage,
+      onDelete,
     },
     ref
   ) => {
@@ -29,6 +32,16 @@ const Main = React.forwardRef(
             data={data}
             onChange={onInputChange}
             onNext={onNextPage}
+          />
+        )}
+
+        {activePage === 1 && (
+          <ExperienceForm
+            data={data}
+            onBack={onPreviousPage}
+            onNext={onNextPage}
+            onChange={onInputChange}
+            onDelete={onDelete}
           />
         )}
       </main>
