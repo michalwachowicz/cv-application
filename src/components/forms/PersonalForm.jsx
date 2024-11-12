@@ -54,9 +54,9 @@ export default function PersonalForm({ data, onChange, onNext }) {
             id="gender"
             label="Gender"
             options={[
-              { value: "male", label: "Male" },
-              { value: "female", label: "Female" },
-              { value: "nonbinary", label: "Non-Binary" },
+              { value: "Male", label: "Male" },
+              { value: "Female", label: "Female" },
+              { value: "Non-Binary", label: "Non-Binary" },
             ]}
             value={data.gender || ""}
             onChange={onChange}

@@ -5,7 +5,7 @@ import Select from "../inputs/Select";
 
 const initialLanguage = {
   id: -1,
-  langaugeName: "",
+  languageName: "",
   languageLevel: "",
 };
 
@@ -50,7 +50,7 @@ export default function LanguagesForm({ data, onSubmit, onDelete }) {
           type="text"
           label="Language"
           placeholder="e.g. English"
-          value={language.langaugeName || ""}
+          value={language.languageName || ""}
           onChange={changeHandler}
           required
         />
@@ -60,13 +60,14 @@ export default function LanguagesForm({ data, onSubmit, onDelete }) {
           label="Level"
           options={[
             { value: "", label: "Do not show" },
-            { value: "native", label: "Native" },
-            { value: "fluent", label: "Fluent" },
-            { value: "advanced", label: "Advanced" },
-            { value: "intermediate", label: "Intermediate" },
-            { value: "beginner", label: "Beginner" },
+            { value: "Native", label: "Native" },
+            { value: "Fluent", label: "Fluent" },
+            { value: "Advanced", label: "Advanced" },
+            { value: "Intermediate", label: "Intermediate" },
+            { value: "Beginner", label: "Beginner" },
           ]}
           value={language.languageLevel || ""}
+          onChange={changeHandler}
         />
       </div>
     </FormSection>

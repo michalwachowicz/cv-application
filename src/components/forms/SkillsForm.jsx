@@ -60,11 +60,12 @@ export default function SkillsForm({ data, onSubmit, onDelete }) {
           label="Level"
           options={[
             { value: "", label: "Do not show" },
-            { value: "advanced", label: "Advanced" },
-            { value: "intermediate", label: "Intermediate" },
-            { value: "beginner", label: "Beginner" },
+            { value: "Advanced", label: "Advanced" },
+            { value: "Intermediate", label: "Intermediate" },
+            { value: "Beginner", label: "Beginner" },
           ]}
           value={skill.skillLevel || ""}
+          onChange={changeHandler}
         />
       </div>
     </FormSection>

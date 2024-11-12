@@ -49,7 +49,7 @@ export default function EducationForm({ data, onSubmit, onDelete }) {
     >
       <div className="form-input-wrapper">
         <Input
-          id="workStudies"
+          id="educationStudies"
           type="text"
           label="Studies"
           placeholder="e.g. Bachelor of Science"
