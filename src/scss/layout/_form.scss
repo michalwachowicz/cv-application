@@ -1,10 +1,68 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/themes" as *;
+
 .form {
+  margin-top: 3rem;
+
+  &-section {
+    &-title {
+      font-size: 1.5rem;
+    }
+
+    &-form-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      list-style: none;
+
+      &-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-info {
+          @include themify {
+            color: themed("text-label");
+          }
+        }
+
+        &-title {
+          font-size: 1.25rem;
+        }
+
+        &-subtitle {
+          font-size: 1.125rem;
+          font-weight: 300;
+          margin-top: 0.15rem;
+        }
+
+        &-btns .btn-icon:first-child {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  &-experience-btns,
+  &-section-form-btns {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
   &-personal {
     display: flex;
     flex-direction: column;
     align-items: end;
     gap: 3rem;
-    margin-top: 3rem;
 
     &-wrapper {
       display: flex;
