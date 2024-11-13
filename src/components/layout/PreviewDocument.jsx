@@ -33,9 +33,12 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
       ref={ref}
       className={`preview ${className}`}
       style={{ fontSize: `${getWidth(20)}px` }}
+      role="document"
+      aria-label="Preview of CV document"
     >
       <div
         className="preview-wrapper"
+        aria-hidden="true"
         style={{
           padding: `${getWidth(48)}px ${getWidth(64)}px`,
           gap: `${getWidth(64)}px`,
