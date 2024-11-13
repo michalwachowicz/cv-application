@@ -48,6 +48,11 @@ function App() {
   }, [previewOpened]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    if (mainRef.current) mainRef.current.querySelector(".card-title").focus();
+  }, [activePage]);
+
+  useEffect(() => {
     // Load theme preference from local storage
     const darkModeValue = localStorage.darkMode;
 

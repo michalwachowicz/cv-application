@@ -22,9 +22,16 @@ const Main = React.forwardRef(
     const { title } = pages[activePage];
 
     return (
-      <main className="card card-main" ref={ref}>
+      <main className="card card-main" ref={ref} role="main">
         <header className="card-header">
-          <h2 className="card-title">{title}</h2>
+          <h2
+            className="card-title"
+            aria-live="polite"
+            aria-atomic="true"
+            tabIndex="-1"
+          >
+            {title}
+          </h2>
           <PreviewButton opened={previewOpened} onOpen={onPreviewOpen} />
         </header>
 
