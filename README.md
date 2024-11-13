@@ -1,8 +1,41 @@
-# React + Vite
+# CV Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A CV creator application built with React and Sass allowing users to input personal information, experience, and skills to generate a structured CV layout which you can preview before downloading.
 
-Currently, two official plugins are available:
+[Visit the page](https://celebrated-daifuku-5ca54a.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+
+![React](https://img.shields.io/badge/-React-000?&logo=React)
+![Sass](https://img.shields.io/badge/-Sass-000?logo=sass)
+![Vite](https://img.shields.io/badge/-Vite-000?logo=vite)
+
+## Getting Started
+
+### Prerequisites
+- [NodeJS](https://nodejs.org/en)
+
+### Cloning
+
+```bash
+git clone git@github.com:michalwachowicz/cv-application.git
+cd cv-application
+```
+
+### Installing and using locally
+
+To install the project, use the following commands:
+
+```bash
+npm install
+npm run build
+```
+
+To use the application, open the `index.html` file located in the `dist` directory
+
+## Contribute
+
+1. `git clone git@github.com:michalwachowicz/cv-application.git`
+2. `git checkout -b feature/NAME`
+3. Follow commit patterns
+4. Open a Pull Request explaining the problem solved or feature made, if exists, append a screenshot of visual modifications and wait for the review!
