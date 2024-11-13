@@ -29,8 +29,8 @@ export default function EducationForm({ data, onSubmit, onDelete }) {
     setEducation(initialEducation);
   };
 
-  const deleteHandler = (newList) => {
-    onDelete("education", newList);
+  const deleteHandler = (ref, newList) => {
+    onDelete("education", newList, ref);
     setEducation(initialEducation);
   };
 

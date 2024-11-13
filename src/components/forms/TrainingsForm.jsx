@@ -29,8 +29,8 @@ export default function TrainingsForm({ data, onSubmit, onDelete }) {
     setTraining(initialTraining);
   };
 
-  const deleteHandler = (newList) => {
-    onDelete("trainings", newList);
+  const deleteHandler = (ref, newList) => {
+    onDelete("trainings", newList, ref);
     setTraining(initialTraining);
   };
 

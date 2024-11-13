@@ -1,9 +1,10 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import formatText from "../../utils/objectTextFormatter";
 import IconButton from "../buttons/IconButton";
 import EditIcon from "../../../public/edit.svg?react";
 import DeleteIcon from "../../../public/delete.svg?react";
+import { focusFirstElement } from "../../utils/focusUtils";
 
 export default function FormSection({
   current,
@@ -19,6 +20,10 @@ export default function FormSection({
   children,
 }) {
   const [editing, setEditing] = useState(false);
+
+  const formRef = useRef();
+  const titleRef = useRef();
+  const openBtnRef = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -57,12 +62,19 @@ export default function FormSection({
     if (index < 0) return;
 
     listCopy.splice(index, 1);
-    onDelete(listCopy);
+    onDelete(titleRef, listCopy);
   };
+
+  useEffect(() => {
+    if (editing && formRef.current) focusFirstElement(formRef.current);
+    else if (!editing && openBtnRef.current) openBtnRef.current.focus();
+  }, [editing]);
 
   return (
     <section className={`form-section ${className}`}>
-      <h3 className="form-section-title">{title}</h3>
+      <h3 ref={titleRef} className="form-section-title" tabIndex="-1">
+        {title}
+      </h3>
 
       {list.length > 0 && <hr />}
 
@@ -99,7 +111,9 @@ export default function FormSection({
 
       {editing && (
         <form className="form-section-form" onSubmit={submitHandler}>
-          <div className="form-section-form-wrapper">{children}</div>
+          <div ref={formRef} className="form-section-form-wrapper">
+            {children}
+          </div>
 
           <div className="form-section-form-btns">
             <button
@@ -121,6 +135,7 @@ export default function FormSection({
 
       {!editing && (
         <button
+          ref={openBtnRef}
           type="button"
           className="btn btn-action btn-action-primary"
           onClick={() => openHandler(null)}

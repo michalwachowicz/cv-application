@@ -26,8 +26,8 @@ export default function SkillsForm({ data, onSubmit, onDelete }) {
     setSkill(initialSkill);
   };
 
-  const deleteHandler = (newList) => {
-    onDelete("skills", newList);
+  const deleteHandler = (ref, newList) => {
+    onDelete("skills", newList, ref);
     setSkill(initialSkill);
   };
 

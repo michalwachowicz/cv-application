@@ -31,8 +31,8 @@ export default function WorkExperienceForm({ data, onSubmit, onDelete }) {
     setWork(initialWork);
   };
 
-  const deleteHandler = (newList) => {
-    onDelete("work", newList);
+  const deleteHandler = (ref, newList) => {
+    onDelete("work", newList, ref);
     setWork(initialWork);
   };
 

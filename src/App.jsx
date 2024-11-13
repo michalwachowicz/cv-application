@@ -5,6 +5,7 @@ import Navigation from "./components/layout/Navigation";
 import Main from "./components/layout/Main";
 import Preview from "./components/layout/Preview";
 import DeletePopup from "./components/popups/DeletePopup";
+import { resetPageFocus } from "./utils/focusUtils";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -37,6 +38,13 @@ function App() {
   const deleteHandler = (item) => {
     inputChangeHandler(item.id, item.list);
     setDeletedItem(null);
+
+    if (item.ref.current) item.ref.current.focus();
+  };
+
+  const cancelDeleteHandler = (item) => {
+    setDeletedItem(null);
+    if (item.ref.current) item.ref.current.focus();
   };
 
   useEffect(() => {
@@ -59,22 +67,13 @@ function App() {
     if (darkModeValue === undefined) localStorage.darkMode = true;
     else setDarkMode(darkModeValue === "true");
 
-    // Reset focusable element on page load
-    const focusableElements = document.body.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusableElements.length > 0) {
-      const focusableElement = focusableElements[0];
-
-      focusableElement.focus();
-      focusableElement.blur();
-    }
-
     // Load user data from local storage
     const dataValue = localStorage.userData;
 
     if (dataValue === undefined) localStorage.userData = JSON.stringify({});
     else setData(JSON.parse(dataValue));
+
+    resetPageFocus();
   }, []);
 
   return (
@@ -93,8 +92,8 @@ function App() {
           onPreviewOpen={() => setPreviewOpened(true)}
           onPreviousPage={() => setActivePage(activePage - 1)}
           onNextPage={() => setActivePage(activePage + 1)}
-          onDelete={(deleteId, newList) =>
-            setDeletedItem({ id: deleteId, list: newList })
+          onDelete={(deleteId, newList, deleteRef) =>
+            setDeletedItem({ id: deleteId, list: newList, ref: deleteRef })
           }
         />
       </div>
@@ -110,7 +109,7 @@ function App() {
       {deletedItem && (
         <DeletePopup
           item={deletedItem}
-          onCancel={() => setDeletedItem(null)}
+          onCancel={cancelDeleteHandler}
           onDelete={deleteHandler}
         />
       )}

@@ -24,8 +24,8 @@ export default function HobbiesForm({ data, onSubmit, onDelete }) {
     setHobby(initialHobby);
   };
 
-  const deleteHandler = (newList) => {
-    onDelete("hobbies", newList);
+  const deleteHandler = (ref, newList) => {
+    onDelete("hobbies", newList, ref);
     setHobby(initialHobby);
   };
 

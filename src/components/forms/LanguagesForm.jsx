@@ -26,8 +26,8 @@ export default function LanguagesForm({ data, onSubmit, onDelete }) {
     setLanguage(initialLanguage);
   };
 
-  const deleteHandler = (newList) => {
-    onDelete("languages", newList);
+  const deleteHandler = (ref, newList) => {
+    onDelete("languages", newList, ref);
     setLanguage(initialLanguage);
   };
 
