@@ -51,50 +51,54 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
           }}
         >
           {data.image && (
-            <img
-              className="preview-image"
-              src={data.image}
-              alt=""
-              width={getWidth(310)}
-              height={getWidth(310)}
-            />
+            <>
+              <img
+                className="preview-image"
+                src={data.image}
+                alt=""
+                width={getWidth(310)}
+                height={getWidth(310)}
+                style={{ marginBottom: `${getWidth(40)}px` }}
+              />
+              <hr
+                className="preview-hr"
+                style={{ marginBottom: `${getWidth(32)}px` }}
+              />
+            </>
           )}
           <div
             className="preview-side-info"
-            style={{
-              gap: `${getWidth(32)}px`,
-              marginTop: `${getWidth(40)}px`,
-            }}
+            style={{ gap: `${getWidth(32)}px` }}
           >
-            <hr className="preview-hr" />
-
-            <div
-              className="preview-side-section"
-              style={{ gap: `${getWidth(16)}px` }}
-            >
-              <h2
-                className="preview-title"
-                style={{ fontSize: `${getWidth(28)}px` }}
+            {personalSection.some((element) => data[element.id]) && (
+              <div
+                className="preview-side-section"
+                style={{ gap: `${getWidth(16)}px` }}
               >
-                Personal Information
-              </h2>
+                <h2
+                  className="preview-title"
+                  style={{ fontSize: `${getWidth(28)}px` }}
+                >
+                  Personal Information
+                </h2>
 
-              {personalSection.map(
-                (item) =>
-                  data[item.id] && (
-                    <div key={item.id}>
-                      <h3>{item.label}</h3>
-                      <div
-                        style={{
-                          marginTop: `${getWidth(4)}px`,
-                        }}
-                      >
-                        {data[item.id]}
+                {personalSection.map(
+                  (item) =>
+                    data[item.id] && (
+                      <div key={item.id}>
+                        <h3>{item.label}</h3>
+                        <div
+                          style={{
+                            marginTop: `${getWidth(4)}px`,
+                          }}
+                        >
+                          {data[item.id]}
+                        </div>
                       </div>
-                    </div>
-                  )
-              )}
-            </div>
+                    )
+                )}
+              </div>
+            )}
 
             {((data.skills && data.skills.length > 0) ||
               (data.languages && data.languages.length > 0) ||
