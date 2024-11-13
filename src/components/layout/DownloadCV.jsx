@@ -10,6 +10,12 @@ export default function DownloadCV({ data, onBack }) {
   const [error, setError] = useState(null);
 
   const docRef = useRef();
+  const titleRef = useRef();
+
+  const downloadStartHandler = () => {
+    setDownloading(true);
+    if (titleRef.current) titleRef.current.focus();
+  };
 
   const downloadCV = () => {
     if (!docRef.current) return;
@@ -40,14 +46,19 @@ export default function DownloadCV({ data, onBack }) {
     <div className="download">
       {!error && <img className="download-img" src={successIcon} alt="" />}
 
-      <div className="download-info">
-        <h3 className="download-title">
+      <div
+        ref={titleRef}
+        className="download-info"
+        aria-labelledby="download-title download-description"
+        tabIndex="-1"
+      >
+        <h3 id="download-title" className="download-title">
           {error && "An error occured!"}
 
           {!error && downloading && "Downloading CV"}
           {!error && !downloading && "Hurray! Your CV is ready to download!"}
         </h3>
-        <p className="download-description">
+        <p id="download-description" className="download-description">
           {error}
 
           {!error && downloading && "Please wait..."}
@@ -66,7 +77,7 @@ export default function DownloadCV({ data, onBack }) {
           <button
             type="button"
             className="btn btn-action btn-action-positive"
-            onClick={() => setDownloading(true)}
+            onClick={downloadStartHandler}
           >
             Download CV
           </button>
