@@ -57,7 +57,10 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (mainRef.current) mainRef.current.querySelector(".card-title").focus();
+    if (mainRef.current) {
+      resetPageFocus();
+      setTimeout(() => mainRef.current.querySelector(".card-title").focus(), 0);
+    }
   }, [activePage]);
 
   useEffect(() => {
@@ -73,7 +76,7 @@ function App() {
     if (dataValue === undefined) localStorage.userData = JSON.stringify({});
     else setData(JSON.parse(dataValue));
 
-    resetPageFocus();
+    setTimeout(resetPageFocus, 0);
   }, []);
 
   return (
