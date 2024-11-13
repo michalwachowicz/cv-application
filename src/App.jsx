@@ -12,7 +12,7 @@ function App() {
   const [previewOpened, setPreviewOpened] = useState(false);
   const [activePage, setActivePage] = useState(0);
   const [deletedItem, setDeletedItem] = useState(null);
-  const [data, setData] = useState({});
+  const [data, setData] = useState({ gender: "Male" });
 
   const mainRef = useRef();
   const previewRef = useRef();
@@ -73,7 +73,8 @@ function App() {
     // Load user data from local storage
     const dataValue = localStorage.userData;
 
-    if (dataValue === undefined) localStorage.userData = JSON.stringify({});
+    if (dataValue === undefined)
+      localStorage.userData = JSON.stringify({ gender: "Male" });
     else setData(JSON.parse(dataValue));
 
     setTimeout(resetPageFocus, 0);
