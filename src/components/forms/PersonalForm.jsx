@@ -4,8 +4,13 @@ import PhotoInput from "../inputs/PhotoInput";
 import Select from "../inputs/Select";
 
 export default function PersonalForm({ data, onChange, onNext }) {
+  const submitHandler = (e) => {
+    e.preventDefault();
+    onNext();
+  };
+
   return (
-    <form className="form form-personal" onSubmit={onNext}>
+    <form className="form form-personal" onSubmit={submitHandler}>
       <div className="form-personal-wrapper">
         <PhotoInput image={data.image || null} onChange={onChange} />
 
