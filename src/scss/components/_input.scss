@@ -26,6 +26,12 @@
       outline: 2px solid #8b5cf6;
     }
 
+    &::placeholder {
+      @include themify {
+        color: themed("placeholder");
+      }
+    }
+
     @include themify {
       background-color: themed("input");
       color: themed("text-main");
