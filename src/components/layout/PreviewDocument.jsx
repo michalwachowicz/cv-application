@@ -1,11 +1,10 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import formatText from "../../utils/objectTextFormatter";
 
 const A4_WIDTH = 1190;
 
-export default function PreviewDocument({ data }) {
+const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
   const [width, setWidth] = useState(0);
-  const doc = useRef();
 
   const personalSection = [
     { id: "email", label: "E-mail Address" },
@@ -19,19 +18,20 @@ export default function PreviewDocument({ data }) {
   ];
 
   const getWidth = (originalWidth) => (originalWidth / A4_WIDTH) * width;
-  const updateSize = () => setWidth(doc.current ? doc.current.offsetWidth : 0);
 
   useLayoutEffect(() => {
+    const updateSize = () =>
+      setWidth(ref.current ? ref.current.offsetWidth : 0);
     window.addEventListener("resize", updateSize);
     updateSize();
 
     return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  }, [ref]);
 
   return (
     <div
-      ref={doc}
-      className="preview"
+      ref={ref}
+      className={`preview ${className}`}
       style={{ fontSize: `${getWidth(20)}px` }}
     >
       <div
@@ -346,4 +346,6 @@ export default function PreviewDocument({ data }) {
       </div>
     </div>
   );
-}
+});
+
+export default PreviewDocument;
