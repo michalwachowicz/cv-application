@@ -1,0 +1,41 @@
+@use "../abstracts/mixins" as *;
+
+.download {
+  gap: 3rem;
+  align-items: center;
+
+  &,
+  &-btns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-btns {
+    max-width: 20rem;
+    width: 100%;
+    gap: 1rem;
+
+    .btn {
+      padding: 1rem 2rem;
+    }
+  }
+
+  &-img {
+    @include squared(22rem);
+  }
+
+  &-info {
+    text-align: center;
+  }
+
+  &-title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  &-description {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 200;
+  }
+}

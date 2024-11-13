@@ -2,6 +2,7 @@ import React from "react";
 import PreviewButton from "../buttons/PreviewButton";
 import PersonalForm from "../forms/PersonalForm";
 import ExperienceForm from "../forms/ExperienceForm";
+import DownloadCV from "./DownloadCV";
 
 const Main = React.forwardRef(
   (
@@ -44,6 +45,8 @@ const Main = React.forwardRef(
             onDelete={onDelete}
           />
         )}
+
+        {activePage === 2 && <DownloadCV data={data} onBack={onPreviousPage} />}
       </main>
     );
   }

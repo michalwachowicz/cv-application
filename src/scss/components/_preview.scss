@@ -3,6 +3,13 @@
   background-color: #fff;
   color: #000;
   aspect-ratio: 1 / 1.414;
+  max-width: 1190px;
+  width: 100%;
+
+  &-download {
+    position: fixed;
+    right: -100%;
+  }
 
   &-wrapper {
     display: flex;
