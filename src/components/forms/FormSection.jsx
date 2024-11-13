@@ -93,11 +93,14 @@ export default function FormSection({
             </div>
 
             <div className="form-section-list-item-btns">
-              <IconButton label="Edit" onClick={() => openHandler(element)}>
+              <IconButton
+                label={formatText(element, `Edit $[${elementTitle}]`)}
+                onClick={() => openHandler(element)}
+              >
                 <EditIcon />
               </IconButton>
               <IconButton
-                label="Delete"
+                label={formatText(element, `Delete $[${elementTitle}]`)}
                 onClick={() => deleteHandler(element.id)}
               >
                 <DeleteIcon />
