@@ -3,7 +3,9 @@ import React from "react";
 function NavigationItem({ active, title }) {
   return (
     <li className={`nav-list-item ${active ? "nav-list-item-active" : ""}`}>
-      <div className="nav-list-item-title">{title}</div>
+      <div className="nav-list-item-title">
+        <span className="nav-list-item-title-text">{title}</span>
+      </div>
     </li>
   );
 }

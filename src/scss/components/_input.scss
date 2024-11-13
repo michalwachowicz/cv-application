@@ -2,6 +2,7 @@
 @use "../abstracts/mixins" as *;
 
 .input {
+  @include mobile-font-size(1rem);
   font-size: 1.25rem;
 
   @include themify {
@@ -29,6 +30,8 @@
       background-color: themed("input");
       color: themed("text-main");
     }
+
+    @include mobile-font-size(1rem);
   }
 
   textarea {
@@ -70,6 +73,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
+
+      @media (max-width: 420px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
     }
   }
 
@@ -95,9 +103,10 @@
       }
 
       &-picture {
+        @include squared($size);
+
         content: "";
-        width: 5rem;
-        height: 5rem;
+        aspect-ratio: 1 / 1;
 
         -webkit-mask: url("/profile.svg") no-repeat center;
         mask: url("/profile.svg") no-repeat center;
@@ -110,6 +119,7 @@
 
     &-img {
       @include squared($size);
+      aspect-ratio: 1 / 1;
       margin-top: 0.5rem;
       border-radius: 1rem;
     }

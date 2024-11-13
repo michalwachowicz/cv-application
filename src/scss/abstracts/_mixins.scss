@@ -15,3 +15,9 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin mobile-font-size($size) {
+  @media (max-width: 380px) {
+    font-size: $size;
+  }
+}

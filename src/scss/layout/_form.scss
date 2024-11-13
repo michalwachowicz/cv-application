@@ -9,10 +9,15 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     width: 100%;
+
+    @media (max-width: 580px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &-section {
     &-title {
+      @include mobile-font-size(1.25rem);
       font-size: 1.5rem;
     }
 
@@ -33,6 +38,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 1rem;
+
+        &-btns {
+          min-width: 4rem;
+        }
 
         &-info {
           @include themify {
@@ -50,6 +60,11 @@
           margin-top: 0.15rem;
         }
 
+        &-title,
+        &-subtitle {
+          @include mobile-font-size(1rem);
+        }
+
         &-btns .btn-icon:first-child {
           margin-right: 1rem;
         }
@@ -63,6 +78,10 @@
     justify-content: end;
     gap: 1rem;
     margin-top: 3rem;
+
+    @media (max-width: 580px) {
+      flex-direction: column-reverse;
+    }
   }
 
   &-experience-wrapper {
@@ -78,11 +97,20 @@
     align-items: end;
     gap: 3rem;
 
+    @media (max-width: 580px) {
+      align-items: stretch;
+    }
+
     &-wrapper {
       display: flex;
       align-items: start;
       width: 100%;
       gap: 3rem;
+
+      @media (max-width: 580px) {
+        flex-direction: column;
+        align-items: stretch;
+      }
 
       &-inputs {
         display: grid;
@@ -90,6 +118,10 @@
         grid-auto-rows: auto;
         gap: 2rem;
         flex: 1;
+
+        @media (max-width: 750px) {
+          grid-template-columns: 1fr;
+        }
       }
     }
   }
