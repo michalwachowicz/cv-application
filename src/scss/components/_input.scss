@@ -111,13 +111,11 @@
       }
 
       &-picture {
-        @include squared($size);
+        @include squared(5rem);
 
         content: "";
-        aspect-ratio: 1 / 1;
-
-        -webkit-mask: url("/profile.svg") no-repeat center;
         mask: url("/profile.svg") no-repeat center;
+        -webkit-mask: url("/profile.svg") no-repeat center;
 
         @include themify {
           background-color: themed("input-photo");
