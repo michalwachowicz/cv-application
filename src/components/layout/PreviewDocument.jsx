@@ -18,6 +18,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
   ];
 
   const getWidth = (originalWidth) => (originalWidth / A4_WIDTH) * width;
+  const h2FontSize = Math.round(getWidth(28));
 
   useLayoutEffect(() => {
     const updateSize = () =>
@@ -77,7 +78,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
               >
                 <h2
                   className="preview-title"
-                  style={{ fontSize: `${getWidth(28)}px` }}
+                  style={{ fontSize: `${h2FontSize}px` }}
                 >
                   Personal Information
                 </h2>
@@ -114,7 +115,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
                 >
                   <h2
                     className="preview-title"
-                    style={{ fontSize: `${getWidth(28)}px` }}
+                    style={{ fontSize: `${h2FontSize}px` }}
                   >
                     Skills
                   </h2>
@@ -146,7 +147,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
                 >
                   <h2
                     className="preview-title"
-                    style={{ fontSize: `${getWidth(28)}px` }}
+                    style={{ fontSize: `${h2FontSize}px` }}
                   >
                     Languages
                   </h2>
@@ -176,7 +177,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
               >
                 <h2
                   className="preview-title"
-                  style={{ fontSize: `${getWidth(28)}px` }}
+                  style={{ fontSize: `${h2FontSize}px` }}
                 >
                   Hobbies
                 </h2>
@@ -220,7 +221,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
               <h2
                 className="preview-title"
                 style={{
-                  fontSize: `${getWidth(28)}px`,
+                  fontSize: `${h2FontSize}px`,
                   marginTop: `${getWidth(40)}px`,
                 }}
               >
@@ -269,7 +270,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
               <h2
                 className="preview-title"
                 style={{
-                  fontSize: `${getWidth(28)}px`,
+                  fontSize: `${h2FontSize}px`,
                   marginTop: `${getWidth(40)}px`,
                 }}
               >
@@ -307,7 +308,7 @@ const PreviewDocument = React.forwardRef(({ data, className = "" }, ref) => {
               <h2
                 className="preview-title"
                 style={{
-                  fontSize: `${getWidth(28)}px`,
+                  fontSize: `${h2FontSize}px`,
                   marginTop: `${getWidth(40)}px`,
                 }}
               >
