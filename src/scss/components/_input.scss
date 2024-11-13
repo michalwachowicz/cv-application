@@ -2,11 +2,13 @@
 @use "../abstracts/mixins" as *;
 
 .input {
-  @include mobile-font-size(1rem);
   font-size: 1.25rem;
+  @include mobile-font-size(1rem);
 
-  @include themify {
-    color: themed("text-label");
+  & {
+    @include themify {
+      color: themed("text-label");
+    }
   }
 
   input,

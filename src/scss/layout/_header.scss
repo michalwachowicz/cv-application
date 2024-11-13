@@ -8,9 +8,9 @@
   margin-bottom: 5rem;
 
   &-title {
-    @include mobile-font-size(2rem);
-
     font-size: 2.25rem;
     font-weight: 900;
+
+    @include mobile-font-size(2rem);
   }
 }

@@ -16,8 +16,8 @@
   }
 
   &-title {
-    @include mobile-font-size(1.75rem);
     font-size: 2rem;
+    @include mobile-font-size(1.75rem);
   }
 
   &-main {
