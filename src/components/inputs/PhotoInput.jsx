@@ -7,7 +7,24 @@ export default function PhotoInput({ image, onChange }) {
 
     const reader = new FileReader();
 
-    reader.onloadend = () => onChange("image", reader.result);
+    reader.onloadend = () => {
+      const img = new Image();
+      img.src = reader.result;
+
+      // Compress image
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        const maxWidth = 310;
+
+        canvas.width = maxWidth;
+        canvas.height = maxWidth;
+
+        context.drawImage(img, 0, 0, maxWidth, maxWidth);
+        onChange("image", canvas.toDataURL("image/jpeg", 0.7));
+      };
+    };
+
     reader.readAsDataURL(file);
   };
 
