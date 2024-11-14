@@ -28,16 +28,16 @@
       outline: 2px solid #8b5cf6;
     }
 
-    &:disabled,
-    &::placeholder {
-      @include themify {
+    @include themify {
+      & {
+        background-color: themed("input");
+        color: themed("text-main");
+      }
+
+      &:disabled,
+      &::placeholder {
         color: themed("placeholder");
       }
-    }
-
-    @include themify {
-      background-color: themed("input");
-      color: themed("text-main");
     }
 
     @include mobile-font-size(1rem);
