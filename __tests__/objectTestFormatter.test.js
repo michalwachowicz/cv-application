@@ -26,4 +26,7 @@ describe("formatText", () => {
     );
     expect(formatText({ a: {}, b: null }, "$[a:date] $[b:date]")).toBe(" ");
   });
+
+  it('formats current date object to "Now"', () =>
+    expect(formatText({ date: "Now" }, "$[date:date]")).toBe("Now"));
 });

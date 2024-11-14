@@ -13,6 +13,8 @@ const formatKey = (object, retrievedKey) => {
   if (!value) return "";
 
   if (formatter && formatter === "date") {
+    if (value === "Now") return "Now";
+
     return `${getFormattedMonth(value)} ${value.year || ""}`.trim();
   }
 
