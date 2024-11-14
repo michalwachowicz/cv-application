@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormSection from "./FormSection";
 import Input from "../inputs/Input";
 import DateSelect from "../inputs/DateSelect";
+import Checkbox from "../inputs/Checkbox";
 
 const initialEducation = {
   id: -1,
@@ -14,14 +15,29 @@ const initialEducation = {
 
 export default function EducationForm({ data, onSubmit, onDelete }) {
   const [education, setEducation] = useState(initialEducation);
+  const [educationEndDate, setEducationEndDate] = useState(
+    initialEducation.educationEndDate
+  );
+  const [stillStudying, setStillStudying] = useState(false);
+
   const list = data.education || [];
 
   const changeHandler = (id, value) => {
     setEducation({ ...education, [id]: value });
+    if (id === "educationEndDate") setEducationEndDate(value);
   };
 
   const openHandler = (object) => {
-    setEducation(object || initialEducation);
+    const educationObject = object || initialEducation;
+    const isNow = educationObject.educationEndDate === "Now";
+
+    setEducation(educationObject);
+    setEducationEndDate(
+      isNow
+        ? initialEducation.educationEndDate
+        : educationObject.educationEndDate
+    );
+    setStillStudying(isNow);
   };
 
   const submitHandler = (newList) => {
@@ -32,6 +48,14 @@ export default function EducationForm({ data, onSubmit, onDelete }) {
   const deleteHandler = (ref, newList) => {
     onDelete("education", newList, ref);
     setEducation(initialEducation);
+  };
+
+  const stillStudyingHandler = () => {
+    setEducation({
+      ...education,
+      educationEndDate: stillStudying ? educationEndDate : "Now",
+    });
+    setStillStudying(!stillStudying);
   };
 
   return (
@@ -79,21 +103,31 @@ export default function EducationForm({ data, onSubmit, onDelete }) {
         required
       />
 
-      <div className="form-input-wrapper">
-        <DateSelect
-          id="educationStartDate"
-          label="Start date"
-          value={education.educationStartDate || {}}
-          onChange={changeHandler}
-          required
-        />
+      <div className="form-input-wrapper-date">
+        <div className="form-input-wrapper">
+          <DateSelect
+            id="educationStartDate"
+            label="Start date"
+            value={education.educationStartDate || {}}
+            onChange={changeHandler}
+            required
+          />
 
-        <DateSelect
-          id="educationEndDate"
-          label="End date"
-          value={education.educationEndDate || {}}
-          onChange={changeHandler}
-          required
+          <DateSelect
+            id="educationEndDate"
+            label="End date"
+            value={educationEndDate || {}}
+            onChange={changeHandler}
+            disabled={stillStudying}
+            required
+          />
+        </div>
+
+        <Checkbox
+          id="educationStillStudying"
+          label="Still studying?"
+          checked={stillStudying}
+          onSwitch={stillStudyingHandler}
         />
       </div>
     </FormSection>

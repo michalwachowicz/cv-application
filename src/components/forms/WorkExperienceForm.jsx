@@ -3,6 +3,7 @@ import FormSection from "./FormSection";
 import Input from "../inputs/Input";
 import DateSelect from "../inputs/DateSelect";
 import TextArea from "../inputs/TextArea";
+import Checkbox from "../inputs/Checkbox";
 
 const initialWork = {
   id: -1,
@@ -16,14 +17,23 @@ const initialWork = {
 
 export default function WorkExperienceForm({ data, onSubmit, onDelete }) {
   const [work, setWork] = useState(initialWork);
+  const [workEndDate, setWorkEndDate] = useState(initialWork.workEndDate);
+  const [stillWorking, setStillWorking] = useState(false);
+
   const list = data.work || [];
 
   const changeHandler = (id, value) => {
     setWork({ ...work, [id]: value });
+    if (id === "workEndDate") setWorkEndDate(value);
   };
 
   const openHandler = (object) => {
+    const workObject = object || initialWork;
+    const isNow = workObject.workEndDate === "Now";
+
     setWork(object || initialWork);
+    setWorkEndDate(isNow ? initialWork.workEndDate : workObject.workEndDate);
+    setStillWorking(isNow);
   };
 
   const submitHandler = (newList) => {
@@ -34,6 +44,14 @@ export default function WorkExperienceForm({ data, onSubmit, onDelete }) {
   const deleteHandler = (ref, newList) => {
     onDelete("work", newList, ref);
     setWork(initialWork);
+  };
+
+  const stillWorkingHandler = () => {
+    setWork({
+      ...work,
+      workEndDate: stillWorking ? workEndDate : "Now",
+    });
+    setStillWorking(!stillWorking);
   };
 
   return (
@@ -81,21 +99,31 @@ export default function WorkExperienceForm({ data, onSubmit, onDelete }) {
         required
       />
 
-      <div className="form-input-wrapper">
-        <DateSelect
-          id="workStartDate"
-          label="Start date"
-          value={work.workStartDate || {}}
-          onChange={changeHandler}
-          required
-        />
+      <div className="form-input-wrapper-date">
+        <div className="form-input-wrapper">
+          <DateSelect
+            id="workStartDate"
+            label="Start date"
+            value={work.workStartDate || {}}
+            onChange={changeHandler}
+            required
+          />
 
-        <DateSelect
-          id="workEndDate"
-          label="End date"
-          value={work.workEndDate || {}}
-          onChange={changeHandler}
-          required
+          <DateSelect
+            id="workEndDate"
+            label="End date"
+            value={workEndDate || {}}
+            onChange={changeHandler}
+            disabled={stillWorking}
+            required
+          />
+        </div>
+
+        <Checkbox
+          id="workStillWorking"
+          label="Still working?"
+          checked={stillWorking}
+          onSwitch={stillWorkingHandler}
         />
       </div>
 
