@@ -13,6 +13,10 @@
     @media (max-width: 580px) {
       grid-template-columns: 1fr;
     }
+
+    &-date > .input-checkbox {
+      margin-top: 1rem;
+    }
   }
 
   &-section {
