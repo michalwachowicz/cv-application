@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import PreviewDocument from "./PreviewDocument";
@@ -12,35 +12,33 @@ export default function DownloadCV({ data, onBack }) {
   const docRef = useRef();
   const titleRef = useRef();
 
+  const downloadCV = async () => {
+    if (!docRef.current) return;
+
+    try {
+      const canvas = await html2canvas(docRef.current);
+      const imgData = canvas.toDataURL("image/jpeg", 0.85);
+
+      // eslint-disable-next-line new-cap
+      const pdf = new jsPDF({ orientation: "p", unit: "pt", format: "a4" });
+
+      pdf.addImage(imgData, "JPEG", 0, 0, 595.28, 841.89);
+      pdf.save("download.pdf");
+    } catch (err) {
+      setError(err);
+    } finally {
+      setDownloading(false);
+    }
+  };
+
   const downloadStartHandler = () => {
     setDownloading(true);
     if (titleRef.current) titleRef.current.focus();
-  };
-
-  const downloadCV = () => {
-    if (!docRef.current) return;
 
     setTimeout(async () => {
-      try {
-        const canvas = await html2canvas(docRef.current);
-        const imgData = canvas.toDataURL("image/jpeg", 0.85);
-
-        // eslint-disable-next-line new-cap
-        const pdf = new jsPDF({ orientation: "p", unit: "pt", format: "a4" });
-
-        pdf.addImage(imgData, "JPEG", 0, 0, 595.28, 841.89);
-        pdf.save("download.pdf");
-      } catch (err) {
-        setError(err);
-      }
-
-      setDownloading(false);
+      await downloadCV();
     }, 0);
   };
-
-  useEffect(() => {
-    if (downloading) downloadCV();
-  }, [docRef, downloading]);
 
   return (
     <div className="download">
