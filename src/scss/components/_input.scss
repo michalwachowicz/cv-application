@@ -28,6 +28,7 @@
       outline: 2px solid #8b5cf6;
     }
 
+    &:disabled,
     &::placeholder {
       @include themify {
         color: themed("placeholder");
@@ -97,6 +98,12 @@
 
   &-select {
     position: relative;
+
+    &-disabled::after {
+      @include themify {
+        background-color: themed("placeholder") !important;
+      }
+    }
 
     &::after {
       content: "";

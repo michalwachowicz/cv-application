@@ -7,6 +7,7 @@ export default function DateSelect({
   value,
   onChange,
   required = false,
+  disabled = false,
 }) {
   const monthId = `${id}Month`;
   const yearId = `${id}Year`;
@@ -24,7 +25,7 @@ export default function DateSelect({
 
       <div className="input-select-date-wrapper">
         <label
-          className="input input-select input-select-date"
+          className={`input input-select input-select-date ${disabled ? "input-select-disabled" : ""}`}
           htmlFor={monthId}
           aria-label={`${label} month`}
         >
@@ -34,6 +35,7 @@ export default function DateSelect({
             value={value.month || getMonthsArray()[0]}
             onChange={(e) => changeHandler(monthId, e.target.value)}
             required={required}
+            disabled={disabled}
           >
             {getMonthsArray().map((month, index) => (
               // eslint-disable-next-line react/no-array-index-key
@@ -45,7 +47,7 @@ export default function DateSelect({
         </label>
 
         <label
-          className="input input-select input-select-date"
+          className={`input input-select input-select-date ${disabled ? "input-select-disabled" : ""}`}
           htmlFor={yearId}
           aria-label={`${label} year`}
         >
@@ -55,6 +57,7 @@ export default function DateSelect({
             value={value.year || getYearsArray()[0]}
             onChange={(e) => changeHandler(yearId, e.target.value)}
             required={required}
+            disabled={disabled}
           >
             {getYearsArray().map((year) => (
               <option key={year} value={year}>
